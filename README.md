@@ -1,6 +1,7 @@
 # kimnco
 
-A minimal **React + Vite** frontend project for building a simple company website or landing page.
+Production frontend codebase for a live company website built with **React** and **Vite**.  
+This application is actively used in a real business environment and deployed for public access.
 
 🔗 **Live demo:** https://kimnco.vercel.app
 

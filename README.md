@@ -4,6 +4,7 @@ Production frontend codebase for a live company website built with **React** and
 This application is actively used in a real business environment and deployed for public access.
 
 🔗 **Live demo:** https://kimnco.co.kr
+
 🔗 **Technical Blog:** https://blog.minsung.dev/blog/company-website
 ---
 

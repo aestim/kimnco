@@ -4,9 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        manrope: ['Manrope', 'Pretendard', 'sans-serif'],
-        playfair: ['"Playfair Display"', 'Pretendard', 'serif'],
-        pretendard: ['Pretendard', 'sans-serif'],
+        manrope: ['Pretendard', 'sans-serif'],
+        playfair: ['Pretendard', 'sans-serif'],
         zentry: ["zentry", "sans-serif"],
         general: ["general", "sans-serif"],
         "circular-web": ["circular-web", "sans-serif"],

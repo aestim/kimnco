@@ -32,7 +32,7 @@ const Timeline = () => {
             {/* Header */}
             <div className="max-w-4xl mx-auto text-center mb-16">
                 <p className="text-bronze-500 font-bold uppercase tracking-[0.2em] mb-4 text-sm">{t('timeline.subtitle')}</p>
-                <h1 className="text-4xl md:text-5xl font-playfair font-bold text-silver-100 mb-6">
+                <h1 className="text-4xl md:text-5xl font-zentry font-bold text-silver-100 mb-6">
                     {t('timeline.mainTitle')}
                 </h1>
                 <div className="w-24 h-1 bg-bronze-500 mx-auto rounded-full"></div>

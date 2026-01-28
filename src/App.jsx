@@ -1,19 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Routes, Route, useParams, useNavigate, Outlet, useLocation } from 'react-router-dom';
+import { Routes, Route, useParams, useNavigate, Outlet } from 'react-router-dom';
 
-import About from "./components/About";
-import Features from "./components/Features";
-import Hero from "./components/Hero";
 import NavBar from "./components/Navbar";
 import Footer from './components/Footer';
-
-import Portfolio from './components/Portfolio';
-import Contact from './components/Contact';
 import ScrollToTop from './components/ScrollToTop';
-import Legal from './components/Legal';
+import Loading from './components/Loading';
 
-
+// Lazy load page components
+const HomePage = lazy(() => import('./components/HomePage')); // You'll need to create this file or move the HomePage component
+const Portfolio = lazy(() => import('./components/Portfolio'));
+const Contact = lazy(() => import('./components/Contact'));
+const Legal = lazy(() => import('./components/Legal'));
 
 // A list of your supported languages
 const supportedLanguages = ['ko', 'en'];
@@ -56,8 +54,7 @@ function LanguageLayout() {
   // We can render a loading spinner here while the language is changing
   // to prevent showing content in the wrong language.
   if (i18n.language !== lang) {
-    // You can return a global loading spinner component here
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   // If the language is set correctly, render the main layout and the child route.
@@ -66,7 +63,9 @@ function LanguageLayout() {
       <ScrollToTop />
       <NavBar lang={lang} />
       {/* Outlet renders the matched child route (e.g., HomePage or PortfolioPage) */}
-      <Outlet />
+      <Suspense fallback={<Loading />}>
+        <Outlet />
+      </Suspense>
       <Footer lang={lang} />
     </>
   );
@@ -75,15 +74,8 @@ function LanguageLayout() {
 // --- 3. Page Components ---
 // These are now simple and focused only on their content.
 
-function HomePage() {
-  return (
-    <>
-      <Hero />
-      <About />
-      <Features />
-    </>
-  );
-}
+// Note: HomePage definition removed from here as it should be in its own file for lazy loading to work effectively. 
+// I will ensure src/components/HomePage.jsx exists.
 
 // --- 4. Main App Component (Simplified Routing Structure) ---
 function App() {

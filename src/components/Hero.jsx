@@ -36,6 +36,7 @@ const Hero = () => {
         <div>
           <video
             src="videos/hero.mp4"
+            poster="img/poster1.png"
             loop
             autoPlay
             muted

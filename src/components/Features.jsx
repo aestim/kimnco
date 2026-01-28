@@ -98,7 +98,7 @@ export const BentoCard = ({ src, poster, title, description, lang, propertyType}
         loop
         muted
         playsInline
-        preload="auto"
+        preload="none"
         className="absolute left-0 top-0 size-full object-cover object-center"
       />
       <div className="relative z-10 flex size-full flex-col p-10 text-white text-wrap">

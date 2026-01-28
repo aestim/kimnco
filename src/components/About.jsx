@@ -12,6 +12,7 @@ const About = () => {
         <img
           src="img/about.png"
           alt="About Background"
+          loading="lazy"
           className="absolute inset-0 h-full w-full object-cover"
         />
 

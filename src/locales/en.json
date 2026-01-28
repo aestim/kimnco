@@ -41,6 +41,7 @@
 
   "timeline": {
     "mainTitle": "History",
+    "subtitle": "Our Heritage",
     "decades": {
       "2020s": [
         {
@@ -146,6 +147,13 @@
       ]
     }
   },
+
+  "cta": {
+    "title": "Building the Future, <br /><span class='text-bronze-500 italic'>Together.</span>",
+    "text": "We create spaces that inspire, endure, and elevate lifestyles. <br class='hidden md:block' />Ready to start your next visionary project with Kim & Co?",
+    "button": "Start a Conversation"
+  },
+
 
   "footer": {
     "links": [

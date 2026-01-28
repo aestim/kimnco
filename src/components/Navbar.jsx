@@ -74,7 +74,7 @@ const NavBar = ({ lang }) => {
           className={clsx(
             'relative w-full h-16 rounded-xl border transition-all duration-300',
             {
-              'bg-black/50 backdrop-blur-lg shadow-2xl border-white/20': !isAtTop || isMobileMenuOpen,
+              'bg-midnight-900/80 backdrop-blur-xl shadow-lg border-white/5': !isAtTop || isMobileMenuOpen,
               'bg-transparent border-transparent': isAtTop && !isMobileMenuOpen,
             }
           )}

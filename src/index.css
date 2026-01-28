@@ -1,5 +1,6 @@
 @import url("https://fonts.cdnfonts.com/css/general-sans");
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 
 @tailwind base;
@@ -13,8 +14,9 @@ html {
 body {
   width: 100dvw;
   overflow-x: hidden;
-  background-color: #dfdff0;
-  font-family: 'Pretendard', "General Sans", sans-serif;
+  background-color: #0a0a0a; /* midnight-900 */
+  color: #f5f5f5; /* silver-100 */
+  font-family: 'Manrope', 'Pretendard', sans-serif;
 }
 
 /* marquee */
@@ -97,11 +99,37 @@ body {
   }
 
   .nav-hover-btn {
-    @apply relative ms-10 font-general text-xl uppercase text-blue-50 after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-neutral-800 after:transition-transform after:duration-300 after:ease-[cubic-bezier(0.65_0.05_0.36_1)] hover:after:origin-bottom-left hover:after:scale-x-100 dark:after:bg-white cursor-pointer;
+    @apply relative ms-10 font-semibold text-sm uppercase cursor-pointer tracking-wider;
+    font-family: 'Manrope', sans-serif;
+    color: #d4d4d4; /* silver-300 */
+    transition: color 0.2s ease-in-out;
+  }
+
+  .nav-hover-btn:hover {
+    color: white;
+  }
+
+  .nav-hover-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -0.125rem;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    transform-origin: bottom right;
+    transform: scaleX(0);
+    background-color: #d4af37; /* bronze-500 */
+    transition: transform 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+  }
+
+  .nav-hover-btn:hover::after {
+    transform-origin: bottom left;
+    transform: scaleX(1);
   }
 
   .floating-nav {
-    @apply bg-black rounded-lg border;
+    @apply rounded-lg border border-white/10;
+    background-color: #101010; /* midnight-850 */
   }
 
   .absolute-center {
@@ -125,7 +153,9 @@ body {
   }
 
   .about-subtext {
-    @apply font-robert-regular text-white max-w-xl px-4 md:px-0 text-lg md:text-xl mx-auto;
+    @apply max-w-xl px-4 md:px-0 text-lg md:text-xl mx-auto leading-relaxed;
+    font-family: 'Manrope', sans-serif;
+    color: #e5e5e5; /* silver-200 */
     text-wrap: balance;
     word-break: keep-all;
   }

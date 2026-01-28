@@ -44,28 +44,28 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 bg-black text-gray-200 min-h-screen flex items-center justify-center pt-24">
+    <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 bg-midnight-950 text-silver-100 min-h-screen flex items-center justify-center pt-24 font-manrope">
       <div className="max-w-6xl mx-auto w-full">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-12 text-gray-50">
+        <h2 className="text-5xl md:text-6xl font-bold text-center mb-12 text-silver-100 font-playfair">
           {t("contact.mainTitle")}
         </h2>
-        {/* <p className="text-center text-lg md:text-xl mb-12 max-w-2xl mx-auto text-gray-400">
+        {/* <p className="text-center text-lg md:text-xl mb-12 max-w-2xl mx-auto text-silver-400 font-manrope">
           {t("contact.description")}
         </p> */}
-        <div className="text-center mb-12 text-gray-300"> {/* mb-12 to add space before form */}
-          <p className="text-xl font-semibold mb-2">
-            {t("footer.tel")}: <a href={`tel:${t("footer.telNo").replace(/\s/g, '').replace(/\+/g, '')}`} className="text-blue-400 hover:text-blue-300 transition-colors duration-200">{t("footer.telNo")}</a>
+        <div className="text-center mb-16 text-silver-300"> {/* mb-12 to add space before form */}
+          <p className="text-xl font-medium mb-3">
+            {t("footer.tel")}: <a href={`tel:${t("footer.telNo").replace(/\s/g, '').replace(/\+/g, '')}`} className="text-bronze-400 hover:text-bronze-300 transition-colors duration-200 font-manrope font-bold tracking-wide">{t("footer.telNo")}</a>
           </p>
-          <p className="text-xl font-semibold">
+          <p className="text-xl font-medium">
             {t("footer.fax")}: {t("footer.faxNo")}
           </p>
         </div>
 
         <div className="flex justify-center">
-          <div className="bg-gray-850 rounded-lg shadow-2xl p-8 sm:p-10 lg:p-12 w-full max-w-lg border border-gray-700 hover:border-blue-700 transition-colors duration-300">
-            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl shadow-2xl p-8 sm:p-12 lg:p-16 w-full max-w-xl border border-slate-700/50 hover:border-bronze-500/30 transition-all duration-500">
+            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-8">
               <div>
-                <label htmlFor="name" className="block text-gray-300 text-sm font-medium mb-2">
+                <label htmlFor="name" className="block text-silver-300 text-sm font-semibold mb-2 uppercase tracking-wider">
                   {t("contact.nameLabel")}
                 </label>
                 <input
@@ -76,12 +76,12 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder={t("contact.namePlaceholder")}
                   required
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-md text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200"
+                  className="w-full px-5 py-4 bg-slate-900/50 border border-slate-700 rounded-lg text-silver-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-bronze-500/50 focus:border-bronze-500 transition-all duration-300"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-gray-300 text-sm font-medium mb-2">
+                <label htmlFor="email" className="block text-silver-300 text-sm font-semibold mb-2 uppercase tracking-wider">
                   {t("contact.emailLabel")} {/* Updated */}
                 </label>
                 <input
@@ -92,12 +92,12 @@ const Contact = () => {
                   onChange={handleChange}
                   placeholder={t("contact.emailPlaceholder")}
                   required
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-md text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200"
+                  className="w-full px-5 py-4 bg-slate-900/50 border border-slate-700 rounded-lg text-silver-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-bronze-500/50 focus:border-bronze-500 transition-all duration-300"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-gray-300 text-sm font-medium mb-2">
+                <label htmlFor="message" className="block text-silver-300 text-sm font-semibold mb-2 uppercase tracking-wider">
                   {t("contact.messageLabel")}
                 </label>
                 <textarea
@@ -106,15 +106,15 @@ const Contact = () => {
                   value={form.message}
                   onChange={handleChange}
                   placeholder={t("contact.messagePlaceholder")}
-                  rows="6"
+                  rows="5"
                   required
-                  className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-md text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-200 resize-y"
+                  className="w-full px-5 py-4 bg-slate-900/50 border border-slate-700 rounded-lg text-silver-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-bronze-500/50 focus:border-bronze-500 transition-all duration-300 resize-y"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-md transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-gray-800 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                className="w-full bg-[#d4af37] hover:bg-[#b59026] text-white font-bold py-4 px-6 rounded-lg transition-all duration-300 ease-in-out transform hover:scale-[1.02] hover:shadow-lg hover:shadow-bronze-500/20 focus:outline-none focus:ring-2 focus:ring-[#d4af37] focus:ring-offset-2 focus:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center uppercase tracking-widest text-sm"
                 disabled={loading}
               >
                 {loading ? (
@@ -133,7 +133,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark" />
+      <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="dark" toastClassName="bg-slate-800 text-silver-100 font-manrope" />
     </section>
   );
 };

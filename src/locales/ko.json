@@ -32,6 +32,7 @@
   
   "timeline": {
     "mainTitle": "연혁",
+    "subtitle": "Our Heritage",
     "decades": {
       "2020s": [
         {
@@ -137,6 +138,13 @@
       ]
     }
   },
+
+  "cta": {
+    "title": "새로운 가치 창조,<br /><span class='text-bronze-500 italic'>성공을 잇는 파트너.</span>",
+    "text": "차별화된 노하우로 공간의 가치를 극대화합니다.<br />킴앤코와 함께 당신의 비전을 현실로 만드세요.",
+    "button": "프로젝트 문의"
+  },
+
 
   "portfolio": {
     "title": "포트폴리오",

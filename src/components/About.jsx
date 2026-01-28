@@ -6,9 +6,9 @@ const About = () => {
   const { t } = useTranslation();
 
   return (
-    <div id="about" className="w-full">
+    <div id="about" className="w-full bg-black">
       {/* Hero Image Section */}
-      <div className="relative h-[60vh] w-screen">
+      <div className="relative h-[80vh] w-screen overflow-hidden">
         <img
           src="img/about.png"
           alt="About Background"
@@ -16,18 +16,20 @@ const About = () => {
           className="absolute inset-0 h-full w-full object-cover"
         />
 
-        <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center text-center px-4">
-          <div className="mb-6">
-            <p className="font-robert-regular font-black text-2xl uppercase md:text-3xl lg:text-4xl text-white">
+        {/* Gradient Overlay for better text readability and smooth transition */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black"></div>
+
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
+          <div className="mb-2">
+            <p className="font-general text-sm md:text-lg uppercase tracking-[0.5em] text-blue-100 mb-2">
               {t("about.welcome")}
             </p>
-            <AnimatedTitle
-              title={t("about.discover")}
-              containerClass="mt-5 text-white text-center"
-            />
+            <h1 className="font-zentry text-[15vh] leading-[0.8] text-white mix-blend-overlay opacity-90">
+              {t("about.discover")}
+            </h1>
           </div>
 
-          <div className="about-subtext font-robert-regular font-black text-white">
+          <div className="about-subtext font-robert-regular font-medium text-gray-200 mt-8 max-w-2xl text-lg md:text-xl leading-relaxed">
             {t("about.subtext")}
           </div>
         </div>

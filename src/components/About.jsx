@@ -17,14 +17,14 @@ const About = () => {
         />
 
         {/* Gradient Overlay for better text readability and smooth transition */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black"></div>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
           <div className="mb-2">
             <p className="font-manrope text-sm md:text-lg uppercase tracking-[0.5em] text-blue-100 mb-2">
               {t("about.welcome")}
             </p>
-            <h1 className="font-zentry text-[15vh] leading-[0.8] text-white mix-blend-overlay opacity-90">
+            <h1 className="font-zentry text-[15vh] leading-[0.8] text-white opacity-90">
               {t("about.discover")}
             </h1>
           </div>

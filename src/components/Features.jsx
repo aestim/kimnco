@@ -152,8 +152,8 @@ const Features = () => {
           <BentoCard
             lang={lang}
             propertyType="living"
-            src="videos/feature-1.mp4"
-            poster="img/poster1.png"
+            src="/videos/feature-1.mp4"
+            poster="/img/poster1.png"
             title={
               <>
                 {t('features.feature1-title')}
@@ -167,8 +167,8 @@ const Features = () => {
             <BentoCard
               lang={lang}
               propertyType="commercial"
-              src="videos/feature-2.mp4"
-              poster="img/poster2.png"
+              src="/videos/feature-2.mp4"
+              poster="/img/poster2.png"
               title={
                 <>
                   {t('features.feature2-title')}
@@ -181,8 +181,8 @@ const Features = () => {
             <BentoCard
               lang={lang}
               propertyType="resorts"
-              src="videos/feature-3.mp4"
-              poster="img/poster3.png"
+              src="/videos/feature-3.mp4"
+              poster="/img/poster3.png"
               title={
                 <>
                   {t('features.feature3-title')}
@@ -193,8 +193,8 @@ const Features = () => {
 
           <BentoTilt className="bento-tilt_1 md:col-span-1 md:me-0">
             <BentoCard
-              src="videos/feature-4.mp4"
-              poster="img/poster4.png"
+              src="/videos/feature-4.mp4"
+              poster="/img/poster4.png"
               title={
                 <>
                   {t('features.feature4-title')}

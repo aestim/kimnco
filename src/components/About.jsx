@@ -10,7 +10,7 @@ const About = () => {
       {/* Hero Image Section */}
       <div className="relative h-[80vh] w-screen overflow-hidden">
         <img
-          src="img/about.png"
+          src="/img/about.png"
           alt="About Background"
           loading="lazy"
           className="absolute inset-0 h-full w-full object-cover"

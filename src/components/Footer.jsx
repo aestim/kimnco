@@ -21,7 +21,7 @@ const Footer = ({ lang }) => {
   return (
     <footer className="border-t border-white/10 bg-midnight-950 text-silver-400">
       <div className="section-container py-12 md:py-16">
-        <div className="grid gap-10 md:grid-cols-2 md:gap-12">
+        <div className="grid gap-10 md:grid-cols-2 md:items-start md:gap-12">
           <div>
             <img src="/img/logo.png" alt="Kim & Co" className="mb-6 w-12" />
             <p className="mb-2 text-lg font-bold text-white">
@@ -48,11 +48,11 @@ const Footer = ({ lang }) => {
             </div>
           </div>
 
-          <div className="md:text-right">
+          <div className="flex flex-col items-end">
             <p className="mb-4 text-sm font-bold uppercase tracking-wider text-silver-300">
               {t("footer.quickLinks")}
             </p>
-            <ul className="space-y-2">
+            <ul className="space-y-2 text-right">
               {footerItems.map((item) => (
                 <li key={item.id}>
                   <Link

@@ -1,14 +1,14 @@
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from 'react-i18next';
-import { Link, useLocation } from 'react-router-dom';
-import clsx from 'clsx';
-import LanguageToggle from "./LanguageToggle"; // Make sure to import it
-import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai';
+import { useTranslation } from "react-i18next";
+import { Link, useLocation } from "react-router-dom";
+import clsx from "clsx";
+import LanguageToggle from "./LanguageToggle";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const NavBar = ({ lang }) => {
   const { t } = useTranslation();
-  const navItems = t('nav', { returnObjects: true });
+  const navItems = t("nav", { returnObjects: true });
   const navContainerRef = useRef(null);
   const { y: currentScrollY } = useWindowScroll();
   const [isNavVisible, setIsNavVisible] = useState(true);
@@ -16,6 +16,9 @@ const NavBar = ({ lang }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAtTop, setIsAtTop] = useState(true);
   const location = useLocation();
+
+  const isHome =
+    location.pathname === `/${lang}` || location.pathname === `/${lang}/`;
 
   useEffect(() => {
     const atTop = currentScrollY <= 10;
@@ -25,7 +28,7 @@ const NavBar = ({ lang }) => {
       setIsNavVisible(true);
       return;
     }
-    
+
     if (atTop) {
       setIsNavVisible(true);
     } else if (currentScrollY > lastScrollY) {
@@ -42,27 +45,47 @@ const NavBar = ({ lang }) => {
       window.gsap.to(navContainerRef.current, {
         y: isNavVisible ? 0 : -150,
         duration: 0.3,
-        ease: 'power2.out',
+        ease: "power2.out",
       });
     }
   }, [isNavVisible]);
 
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [isMobileMenuOpen]);
 
   const handleLogoClick = (e) => {
-    if (location.pathname === `/${lang}` || location.pathname === `/${lang}/`) {
+    if (isHome) {
       e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth',
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
+
+  const getNavHref = (item) => {
+    if (item.type === "anchor") {
+      return isHome ? `#${item.id}` : `/${lang}#${item.id}`;
+    }
+    return `/${lang}/${item.id}`;
+  };
+
+  const handleNavClick = (item, e) => {
+    if (item.type === "anchor" && isHome) {
+      e.preventDefault();
+      const el = document.getElementById(item.id);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+      setIsMobileMenuOpen(false);
+    } else {
+      setIsMobileMenuOpen(false);
+    }
+  };
+
+  const navLinkClass =
+    "text-sm font-semibold uppercase tracking-wider text-silver-300 transition-colors hover:text-white";
 
   return (
     <>
@@ -72,39 +95,51 @@ const NavBar = ({ lang }) => {
       >
         <header
           className={clsx(
-            'relative w-full h-16 rounded-xl border transition-all duration-300',
+            "relative w-full h-16 rounded-xl border transition-all duration-300",
             {
-              'bg-midnight-900/80 backdrop-blur-xl shadow-lg border-white/5': !isAtTop || isMobileMenuOpen,
-              'bg-transparent border-transparent': isAtTop && !isMobileMenuOpen,
+              "bg-midnight-900/90 backdrop-blur-xl shadow-lg border-white/10":
+                !isAtTop || isMobileMenuOpen,
+              "bg-transparent border-transparent":
+                isAtTop && !isMobileMenuOpen,
             }
           )}
         >
           <nav className="flex items-center justify-between w-full h-full px-4 sm:px-6">
-            <Link 
-              to={`/${lang}`} 
-              className="flex items-center shrink-0" 
+            <Link
+              to={`/${lang}`}
+              className="flex items-center shrink-0"
               onClick={handleLogoClick}
             >
-              <img src="/img/logo.png" alt="logo" className="w-10" />
+              <img src="/img/logo.png" alt="Kim & Co" className="w-10" />
             </Link>
 
-            <div className="hidden md:flex h-full items-center gap-2">
-              {navItems.map((item) => (
-                <Link key={item.id} to={`/${lang}/${item.id}`} className="nav-hover-btn">
-                  {item.text}
-                </Link>
-              ))}
-              <LanguageToggle className="ml-8" />
+            <div className="hidden lg:flex h-full items-center gap-6">
+              {Array.isArray(navItems) &&
+                navItems.map((item) => (
+                  <a
+                    key={item.id}
+                    href={getNavHref(item)}
+                    onClick={(e) => handleNavClick(item, e)}
+                    className={navLinkClass}
+                  >
+                    {item.text}
+                  </a>
+                ))}
+              <LanguageToggle className="ml-4" />
             </div>
 
-            <div className="flex items-center md:hidden">
+            <div className="flex items-center lg:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="z-50 p-2 text-gray-200 transition-colors hover:text-white"
                 aria-label="Toggle menu"
                 aria-expanded={isMobileMenuOpen}
               >
-                {isMobileMenuOpen ? <AiOutlineClose size={28} /> : <AiOutlineMenu size={28} />}
+                {isMobileMenuOpen ? (
+                  <AiOutlineClose size={28} />
+                ) : (
+                  <AiOutlineMenu size={28} />
+                )}
               </button>
             </div>
           </nav>
@@ -113,7 +148,7 @@ const NavBar = ({ lang }) => {
 
       <div
         className={clsx(
-          "fixed inset-0 z-40 bg-gray-900/90 backdrop-blur-md transition-opacity duration-300 md:hidden",
+          "fixed inset-0 z-40 bg-midnight-950/95 backdrop-blur-md transition-opacity duration-300 lg:hidden",
           {
             "visible opacity-100": isMobileMenuOpen,
             "invisible opacity-0": !isMobileMenuOpen,
@@ -122,16 +157,17 @@ const NavBar = ({ lang }) => {
       >
         <div className="flex flex-col items-center justify-center h-full pt-16">
           <div className="flex flex-col items-center gap-6 text-center">
-            {navItems.map((item) => (
-              <Link
-                key={item.id}
-                to={`/${lang}/${item.id}`}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-2xl font-semibold text-gray-200 transition-colors hover:text-white"
-              >
-                {item.text}
-              </Link>
-            ))}
+            {Array.isArray(navItems) &&
+              navItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={getNavHref(item)}
+                  onClick={(e) => handleNavClick(item, e)}
+                  className="text-2xl font-semibold text-gray-200 transition-colors hover:text-white"
+                >
+                  {item.text}
+                </a>
+              ))}
           </div>
           <div className="mt-12">
             <LanguageToggle />

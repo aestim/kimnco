@@ -92,6 +92,18 @@ body {
 }
 
 @layer utilities {
+  .section-padding {
+    @apply py-20 md:py-28 px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto;
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-white/10 bg-white/[0.03] shadow-xl transition-colors duration-300 hover:border-bronze-500/25;
+  }
+
   .border-hsla {
     @apply border border-white/20;
   }

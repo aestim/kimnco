@@ -1,12 +1,14 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import { useSearchParams } from "react-router-dom";
 // import TitleHeader from "../components/TitleHeader";
 
 const Contact = () => {
-  const { t } = useTranslation(); // Initialize useTranslation hook
+  const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
   const formRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -15,6 +17,14 @@ const Contact = () => {
     message: "",
     contactNo: "",
   });
+
+  useEffect(() => {
+    const intent = searchParams.get("intent");
+    const prefillKey = intent ? `contact.prefill.${intent}` : null;
+    if (prefillKey && t(prefillKey) !== prefillKey) {
+      setForm((prev) => ({ ...prev, message: t(prefillKey) }));
+    }
+  }, [searchParams, t]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;

@@ -33,11 +33,11 @@ const LogoIcon = ({ icon }) => {
 const LogoShowcase = ({ t }) => (
   // This outermost div defines the 'bento' width for the entire section.
   // Make sure 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' matches your overall bento/container styling.
-  <div className="mt-32 relative md:-mt-60 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center">
-      <h3 className="text-2xl md:text-4xl font-bold tracking-wider text-gray-400 uppercase mb-5">
+      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-silver-500 mb-8">
         {t}
-      </h3>
+      </p>
     </div>
 
     {/* This div acts as the viewport for the marquee. */}

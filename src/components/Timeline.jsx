@@ -1,93 +1,63 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { gsap } from 'gsap';
+import { useTranslation } from "react-i18next";
+import SectionHeader from "./SectionHeader";
+import ScrollReveal from "./ScrollReveal";
 
 const Timeline = () => {
-    const { t } = useTranslation();
-    const contentRef = useRef(null);
+  const { t } = useTranslation();
+  const highlights = t("timeline.highlights", { returnObjects: true });
 
-    // Get decade keys (2020s, 2010s, etc.)
-    const decadeKeys = ['2020s', '2010s', '2000s', '1990s'];
-    const [activeDecade, setActiveDecade] = useState(decadeKeys[0]);
+  return (
+    <section id="history" className="section-padding bg-midnight-950 text-silver-100 font-manrope">
+      <div className="section-container">
+        <ScrollReveal>
+          <SectionHeader
+            eyebrow={t("timeline.subtitle")}
+            title={t("timeline.mainTitle")}
+            description={t("timeline.briefDescription")}
+          />
+        </ScrollReveal>
 
-    // Get events for the active decade
-    const activeEvents = useMemo(() => {
-        const decadesData = t('timeline.decades', { returnObjects: true });
-        if (!decadesData || typeof decadesData !== 'object') return [];
-        return decadesData[activeDecade] || [];
-    }, [t, activeDecade]);
+        <div className="relative mx-auto max-w-3xl">
+          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-bronze-500/30 md:left-1/2 md:-translate-x-px" />
 
-    // Animate content change
-    useEffect(() => {
-        if (contentRef.current) {
-            gsap.fromTo(contentRef.current, 
-                { opacity: 0, y: 20 }, 
-                { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }
-            );
-        }
-    }, [activeDecade]);
+          <div className="space-y-8">
+            {Array.isArray(highlights) &&
+              highlights.map((item, index) => (
+                <ScrollReveal key={index} delay={index * 60}>
+                  <div
+                    className={`relative flex items-start gap-6 md:gap-0 ${
+                      index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                    }`}
+                  >
+                    <div className="hidden md:block md:w-1/2" />
 
-    return (
-        <section className="w-full bg-midnight-950 text-silver-100 py-24 px-4 sm:px-6 lg:px-8 font-manrope">
-            {/* Header */}
-            <div className="max-w-4xl mx-auto text-center mb-16">
-                <p className="text-bronze-500 font-bold uppercase tracking-[0.2em] mb-4 text-sm">{t('timeline.subtitle')}</p>
-                <h1 className="text-4xl md:text-5xl font-zentry font-bold text-silver-100 mb-6">
-                    {t('timeline.mainTitle')}
-                </h1>
-                <div className="w-24 h-1 bg-bronze-500 mx-auto rounded-full"></div>
-            </div>
+                    <div className="absolute left-0 z-10 h-4 w-4 rounded-full border-2 border-bronze-500 bg-midnight-950 md:left-1/2 md:-translate-x-2" />
 
-            {/* Decade Tabs */}
-            <div className="max-w-4xl mx-auto mb-16">
-                <div className="flex flex-wrap justify-center gap-4 md:gap-8 border-b border-slate-800 pb-4">
-                    {decadeKeys.map((decade) => (
-                        <button
-                            key={decade}
-                            onClick={() => setActiveDecade(decade)}
-                            className={`pb-4 text-lg md:text-2xl font-playfair font-bold transition-all duration-300 relative ${
-                                activeDecade === decade
-                                    ? 'text-bronze-500'
-                                    : 'text-slate-600 hover:text-silver-300'
-                            }`}
-                        >
-                            {decade}
-                            {/* Active Underline */}
-                            <span className={`absolute bottom-[-1px] left-0 w-full h-1 bg-bronze-500 transform transition-transform duration-300 ${activeDecade === decade ? 'scale-x-100' : 'scale-x-0'}`}></span>
-                        </button>
-                    ))}
-                </div>
-            </div>
-
-            {/* Content Display Area */}
-            <div ref={contentRef} className="max-w-5xl mx-auto min-h-[400px]">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                    {activeEvents.map((event, index) => (
-                        <div 
-                            key={`${event.date}-${index}`} 
-                            className="bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-xl relative overflow-hidden group hover:border-bronze-500/30 transition-colors duration-500 flex flex-col h-full"
-                        >
-                            <div className="flex justify-between items-start mb-4">
-                                <span className="text-bronze-400 font-bold text-3xl font-manrope">
-                                    {event.date}
-                                </span>
-                            </div>
-                            
-                            <h3 className="text-xl font-bold text-silver-100 font-playfair mb-3 leading-tight group-hover:text-white transition-colors">
-                                {event.title}
-                            </h3>
-                            
-                            {event.details && (
-                                <p className="text-silver-400 text-sm leading-relaxed mt-auto">
-                                    {event.details}
-                                </p>
-                            )}
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+                    <div
+                      className={`ml-8 md:ml-0 md:w-1/2 ${
+                        index % 2 === 0 ? "md:pl-10" : "md:pr-10 md:text-right"
+                      }`}
+                    >
+                      <span className="text-2xl font-bold text-bronze-400">
+                        {item.year}
+                      </span>
+                      <h3 className="mt-1 text-lg font-bold text-white break-keep">
+                        {item.title}
+                      </h3>
+                      {item.detail && (
+                        <p className="mt-1 text-sm text-silver-400 break-keep">
+                          {item.detail}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Timeline;

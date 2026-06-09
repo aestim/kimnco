@@ -1,16 +1,110 @@
 {
   "hero": {
-    "tagline": "Developing Spaces </br> Defining Futures"
+    "eyebrow": "Since 1992",
+    "tagline": "Developing Spaces,<br />Defining Futures",
+    "description": "From residential construction to commercial and resort development, we create valuable spaces backed by over 30 years of expertise.",
+    "ctaPartnership": "Partnership Inquiry",
+    "stats": [
+      { "value": "₩1T+", "label": "Cumulative Investment", "sub": "Since 1992" },
+      { "value": "30+", "label": "Years of Experience", "sub": "Real Estate Development" },
+      { "value": "10+", "label": "Completed Projects", "sub": "Nationwide" },
+      { "value": "4", "label": "Business Areas", "sub": "Living·Commercial·Resort·Consulting" }
+    ]
   },
-  "about": {
-    "welcome": "Since",
-    "discover": "1992",
-    "subtext": "We have meticulously created dream residential spaces by insightfully unearthing future-valuable land, consistently building unwavering trust with every client."
+
+  "intro": {
+    "eyebrow": "About Us",
+    "title": "Real Estate Development Built on Trust",
+    "description": "We uncover future-valuable land, create dream residential spaces, and build lasting trust with every client.",
+    "values": [
+      {
+        "title": "Land Discovery",
+        "text": "We identify high-potential locations and establish a foundation for sustainable development."
+      },
+      {
+        "title": "Space Creation",
+        "text": "We enhance quality of life through residential, commercial, and resort developments."
+      },
+      {
+        "title": "Trusted Management",
+        "text": "Transparent operations and a proven track record earn the confidence of partners and clients."
+      }
+    ]
+  },
+
+  "business": {
+    "eyebrow": "Business",
+    "title": "Business Areas",
+    "description": "A comprehensive real estate company spanning residential construction, urban development, resorts, and consulting.",
+    "cta": "View Projects",
+    "areas": {
+      "living": {
+        "label": "Residential",
+        "title": "Living",
+        "text": "We create residential spaces where your dreams become reality, elevating the value of your life."
+      },
+      "commercial": {
+        "label": "Commercial",
+        "title": "Commercial",
+        "text": "We create new value through efficient work environments and revitalized commercial districts."
+      },
+      "resorts": {
+        "label": "Resort",
+        "title": "Resorts",
+        "text": "We introduce future-oriented resorts that offer perfect relaxation from daily stress."
+      },
+      "consulting": {
+        "label": "Consulting",
+        "title": "Consulting",
+        "text": "We help you uncover future-valuable land and reap the abundant fruits of success."
+      }
+    }
+  },
+
+  "portfolioPreview": {
+    "eyebrow": "Projects",
+    "title": "Featured Projects",
+    "description": "Key project performance metrics including investment scale, size, and returns.",
+    "cta": "View Full Portfolio",
+    "investment": "Investment",
+    "scale": "Scale",
+    "statusCompleted": "Completed",
+    "statusInProgress": "In Progress",
+    "metrics": {
+      "saleRate": "Sale Rate",
+      "occupancyRate": "Occupancy",
+      "returnRate": "Return"
+    }
+  },
+
+  "chairman": {
+    "subtitle": "Leadership",
+    "title": "Chairman's Profile",
+    "description": "Leading Kim & Co with industry-recognized achievements and a commitment to excellence.",
+    "message": "Since founding in 1992, he has represented the industry as a director of the Korea Housing Association and earned numerous honors including a Minister of Land award and exemplary taxpayer recognition. Kim & Co continues to earn partner and investor trust through transparent operations and proven development results.",
+    "name": "Kim Gyu-cheol",
+    "role": "Chairman, Kim & Co., Ltd.",
+    "achievements": [
+      "Director, Korea Housing Association (2019–2025)",
+      "Selected as Exemplary Taxpayer by the National Tax Service",
+      "Commendation for Housing Welfare from the Gyeonggi Provincial Office",
+      "Government Award from the Minister of Land, Infrastructure and Transport for Contributions to Housing Industry Development"
+    ]
+  },
+
+  "partners": {
+    "eyebrow": "Partners",
+    "title": "Our Partners",
+    "subtitle": "Growing together with trusted partners"
   },
 
   "nav": [
-    {"text": "portfolio", "id": "portfolio" },
-    {"text": "contact", "id": "contact" }
+    {"text": "About", "id": "intro", "type": "anchor"},
+    {"text": "Projects", "id": "projects", "type": "anchor"},
+    {"text": "Business", "id": "business", "type": "anchor"},
+    {"text": "History", "id": "history", "type": "anchor"},
+    {"text": "Portfolio", "id": "portfolio", "type": "route"},
+    {"text": "Contact", "id": "contact", "type": "route"}
   ],
 
   "features": {
@@ -42,6 +136,15 @@
   "timeline": {
     "mainTitle": "History",
     "subtitle": "Our Heritage",
+    "briefDescription": "Key milestones in Kim & Co's journey since 1992.",
+    "highlights": [
+      { "year": "1992", "title": "Woongbo Development Co., Ltd. established", "detail": "Housing construction" },
+      { "year": "2003", "title": "Kim & Co., Ltd. established", "detail": "Housing construction" },
+      { "year": "2017", "title": "Merger of 4 affiliates", "detail": "Management, landscaping, I&D, South Pacific" },
+      { "year": "2019", "title": "Kim & Co. Holdings established", "detail": "Real estate development & sales" },
+      { "year": "2022", "title": "K&K Co., Ltd. established", "detail": "Residential development & supply" },
+      { "year": "2024", "title": "K-Tower Geomdan established", "detail": "Incheon Geomdan new city development" }
+    ],
     "decades": {
       "2020s": [
         {
@@ -149,13 +252,15 @@
   },
 
   "cta": {
-    "title": "Building the Future, <br /><span class='text-bronze-500 italic'>Together.</span>",
-    "text": "We create spaces that inspire, endure, and elevate lifestyles. <br class='hidden md:block' />Ready to start your next visionary project with Kim & Co?",
-    "button": "Start a Conversation"
+    "title": "Looking for Partners to Grow Together",
+    "text": "Interested in investment, development, or business partnerships?<br />IR material requests are also welcome.",
+    "buttonInvestment": "Investment Inquiry",
+    "buttonIR": "Request IR Materials"
   },
 
 
   "footer": {
+    "quickLinks": "Quick Links",
     "links": [
       {"text": "Contact", "id": "contact" },
       {"text": "Privacy Policy", "id": "privacyPolicy" },
@@ -187,7 +292,12 @@
     "sending": "Sending...",
     "sendMessage": "Send Message",
     "successMessage": "Message sent successfully!",
-    "errorMessage": "Failed to send message. Please try again later."
+    "errorMessage": "Failed to send message. Please try again later.",
+    "prefill": {
+      "partnership": "[Partnership Inquiry] I am interested in business partnership and collaboration.",
+      "investment": "[Investment Inquiry] I am interested in investment and joint ventures.",
+      "ir": "[IR Request] I would like to request company and IR materials."
+    }
   },
   "privacy": {
     "title": "개인정보 처리방침",

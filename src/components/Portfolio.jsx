@@ -15,7 +15,7 @@ const InfoWindow = ({ property, onClose }) => {
   const statusLabel = property.status === "inProgress" ? "진행 중" : "완료";
 
   return (
-    <div className="absolute top-4 left-4 w-[calc(100%-2rem)] max-w-xs lg:w-72 z-20 animate-fade-in">
+    <div className="absolute bottom-4 left-4 w-[calc(100%-2rem)] max-w-xs lg:bottom-auto lg:top-4 lg:w-72 z-20 animate-fade-in">
       <div className="relative bg-[#1c1c1e] text-white rounded-2xl shadow-2xl border border-white/10 p-5">
         <button
           onClick={onClose}
@@ -188,7 +188,6 @@ const Portfolio = () => {
       const center = new window.kakao.maps.LatLng(property.lat, property.lng);
       map.setLevel(5);
       map.panTo(center);
-      if (window.innerWidth < 1024) map.panBy(0, -150);
     }
   };
 

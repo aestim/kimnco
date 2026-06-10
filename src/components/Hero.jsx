@@ -1,15 +1,25 @@
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 const Hero = () => {
   const { t } = useTranslation();
   const { lang } = useParams();
   const currentLang = lang || "ko";
   const stats = t("hero.stats", { returnObjects: true });
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.play().catch(() => {});
+  }, []);
 
   return (
     <section className="relative min-h-dvh w-full overflow-hidden">
       <video
+        ref={videoRef}
         src="/videos/hero.mp4"
         poster="/img/poster1.png"
         loop

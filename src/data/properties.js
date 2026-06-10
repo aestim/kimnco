@@ -88,7 +88,7 @@ export const properties = [
     status: "completed", completionYear: "2012",
     scale: "오피스텔 41실", floors: "지하3/지상9층",
     location: "경기 용인시 수지구 상현동",
-    title: "광교 신대역 킴앤코 시티하임 I",
+    title: "광교 상현역 킴앤코 시티하임 I",
     lat: 37.2981441104908, lng: 127.069888507164,
     url: "https://map.kakao.com/?map_type=TYPE_MAP&itemId=18995819&urlLevel=1&urlX=515491&urlY=1055256",
   },

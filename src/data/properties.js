@@ -12,7 +12,7 @@ const imageCounters = { living: 0, commercial: 0, resorts: 0 };
 
 export const properties = [
   {
-    id: 1, type: "living", typeLabel: "오피스텔",
+    id: 1, type: "living", filterTag: "officetel", typeLabel: "오피스텔",
     status: "completed", completionYear: "2023",
     scale: "1,208실", floors: "지하6/지상20층",
     location: "인천 부평구 부평동",
@@ -84,7 +84,7 @@ export const properties = [
     url: "https://kko.to/Jllj2PQNor",
   },
   {
-    id: 9, type: "commercial", typeLabel: "상업시설",
+    id: 9, type: "commercial", filterTag: "officetel", typeLabel: "오피스텔",
     status: "completed", completionYear: "2012",
     scale: "오피스텔 41실", floors: "지하3/지상9층",
     location: "경기 용인시 수지구 상현동",
@@ -93,7 +93,7 @@ export const properties = [
     url: "https://map.kakao.com/?map_type=TYPE_MAP&itemId=18995819&urlLevel=1&urlX=515491&urlY=1055256",
   },
   {
-    id: 10, type: "commercial", typeLabel: "상업시설",
+    id: 10, type: "commercial", filterTag: "officetel", typeLabel: "오피스텔",
     status: "completed", completionYear: "2015",
     scale: "오피스텔 100실", floors: "지하5/지상9층",
     location: "경기 수원시 영통구 이의동",
@@ -121,7 +121,7 @@ export const properties = [
   },
   {
     id: 13, type: "commercial", typeLabel: "상업시설",
-    status: "inProgress", completionYear: "진행중", usage: "주차 + 근린생활",
+    status: "inProgress", completionYear: "진행중", usage: "주차 + 근린생활", hasImage: false,
     scale: "주차 136면 + 근린상가 19호실", floors: "지하1/지상5층",
     location: "인천 서구 당하동",
     title: "검단 The K-tower 주차",
@@ -139,11 +139,13 @@ export const properties = [
 export const markerInfo = {
   living:     { color: '#EF4444', initial: 'L' },
   commercial: { color: '#F59E0B', initial: 'C' },
+  officetel:  { color: '#3B82F6', initial: 'O' },
   inProgress: { color: '#22C55E', initial: 'P' },
 };
 
 export const markerSources = {
   living:     createMarkerIcon(markerInfo.living.color,     markerInfo.living.initial),
   commercial: createMarkerIcon(markerInfo.commercial.color, markerInfo.commercial.initial),
+  officetel:  createMarkerIcon(markerInfo.officetel.color,  markerInfo.officetel.initial),
   inProgress: createMarkerIcon(markerInfo.inProgress.color, markerInfo.inProgress.initial),
 };

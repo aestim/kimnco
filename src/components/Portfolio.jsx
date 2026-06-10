@@ -71,7 +71,7 @@ const ProjectCard = ({ property, isSelected, onClick }) => {
   const isInProgress = property.hasImage === false;
 
   const wrapperClass = clsx(
-    "group w-full text-left transition-all duration-200 focus:outline-none",
+    "group w-full h-full text-left transition-all duration-200 focus:outline-none flex flex-col",
     isInProgress
       ? clsx(
           "rounded-2xl p-5 border bg-[#1c1c1e] hover:bg-[#242428]",
@@ -86,12 +86,14 @@ const ProjectCard = ({ property, isSelected, onClick }) => {
   if (isInProgress) {
     return (
       <button onClick={() => onClick(property)} className={wrapperClass}>
-        <p className="text-xs text-gray-500 mb-2">진행 중 · {property.typeLabel}</p>
-        <h3 className="text-base font-bold text-white leading-snug break-keep mb-1 line-clamp-2 min-h-[3rem]">
+        <div className="mb-3">
+          <span className="rounded-full bg-green-600/80 px-2.5 py-1 text-xs font-semibold text-white">진행 중</span>
+        </div>
+        <h3 className="text-base font-bold text-white leading-snug break-keep mb-1 line-clamp-2">
           {property.title}
         </h3>
         <p className="text-xs text-gray-500 mb-4">{property.location}</p>
-        <div className="border-t border-white/10 pt-3 grid grid-cols-2 gap-y-3">
+        <div className="border-t border-white/10 pt-3 grid grid-cols-2 gap-y-3 mt-auto">
           <div>
             <p className="text-xs text-gray-500 mb-0.5">규모</p>
             <p className="text-sm font-semibold text-yellow-400">{property.scale}</p>
@@ -111,7 +113,7 @@ const ProjectCard = ({ property, isSelected, onClick }) => {
 
   return (
     <button onClick={() => onClick(property)} className={wrapperClass}>
-      <div className="relative overflow-hidden bg-gray-800 aspect-[4/3]">
+      <div className="relative overflow-hidden bg-gray-800 aspect-[4/3] shrink-0">
         <img
           src={property.image}
           alt={property.title}
@@ -121,13 +123,15 @@ const ProjectCard = ({ property, isSelected, onClick }) => {
         />
         <span className={clsx(
           "absolute top-2.5 left-2.5 rounded-full px-2.5 py-1 text-xs font-semibold text-white",
-          property.type === "living" ? "bg-red-600/80" : "bg-amber-600/80"
+          (property.filterTag || property.type) === "officetel" ? "bg-blue-600/80"
+            : property.type === "living" ? "bg-red-600/80"
+            : "bg-amber-500/80"
         )}>
           {property.typeLabel}
         </span>
       </div>
-      <div className="p-4">
-        <h3 className="font-bold text-white leading-snug break-keep mb-3 line-clamp-2">
+      <div className="p-4 flex flex-col flex-1">
+        <h3 className="font-bold text-white leading-snug break-keep mb-3 line-clamp-2 flex-1">
           {property.title}
         </h3>
         <div className="flex justify-between gap-2 text-sm">
@@ -151,24 +155,26 @@ const Portfolio = () => {
   const [searchParams] = useSearchParams();
   const mapContainerRef = useRef(null);
 
+  const ALL_TYPES = ["living", "commercial", "officetel"];
   const initialType = searchParams.get("type");
   const [filters, setFilters] = useState(() =>
-    initialType ? [initialType] : ["living", "commercial"]
+    initialType ? [initialType] : [...ALL_TYPES]
   );
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [map, setMap] = useState(null);
   const [overviewBounds, setOverviewBounds] = useState(null);
 
   // Stats
-  const completedCount  = properties.filter((p) => p.status === "completed").length;
-  const inProgressCount = properties.filter((p) => p.status === "inProgress").length;
-  const livingCount     = properties.filter((p) => p.type === "living").length;
-  const commercialCount = properties.filter((p) => p.type === "commercial").length;
+  const completedCount   = properties.filter((p) => p.status === "completed").length;
+  const inProgressCount  = properties.filter((p) => p.status === "inProgress").length;
+  const livingCount      = properties.filter((p) => (p.filterTag || p.type) === "living").length;
+  const commercialCount  = properties.filter((p) => (p.filterTag || p.type) === "commercial").length;
+  const officetelCount   = properties.filter((p) => (p.filterTag || p.type) === "officetel").length;
 
   const toggleFilter = (type) => {
     setSelectedProperty(null);
     if (type === "all") {
-      setFilters(filters.length === 2 ? [] : ["living", "commercial"]);
+      setFilters(filters.length === ALL_TYPES.length ? [] : [...ALL_TYPES]);
       return;
     }
     setFilters((prev) =>
@@ -203,7 +209,7 @@ const Portfolio = () => {
     }
   };
 
-  const filteredMarkers = properties.filter((p) => filters.includes(p.type));
+  const filteredMarkers = properties.filter((p) => filters.includes(p.filterTag || p.type));
 
   useEffect(() => {
     if (!map) return;
@@ -219,9 +225,10 @@ const Portfolio = () => {
   }, [filters, map]);
 
   const filterButtons = [
-    { id: "all",        label: t("portfolio.all", "All"),             activeClass: "bg-gradient-to-r from-purple-600 to-blue-600" },
+    { id: "all",        label: t("portfolio.all", "All"),             activeClass: "bg-zinc-600" },
     { id: "living",     label: t("portfolio.living", "주택"),         activeClass: "bg-red-600" },
-    { id: "commercial", label: t("portfolio.commercial", "상업시설"), activeClass: "bg-amber-600" },
+    { id: "commercial", label: t("portfolio.commercial", "상업시설"), activeClass: "bg-amber-500" },
+    { id: "officetel",  label: "오피스텔",                             activeClass: "bg-blue-600" },
   ];
 
   return (
@@ -241,10 +248,11 @@ const Portfolio = () => {
         {/* ── Stats row ── */}
         <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
           {[
-            { dot: "bg-bronze-400", label: "완료", value: `${completedCount}건` },
-            { dot: "bg-green-400",  label: "진행중", value: `${inProgressCount}건` },
-            { dot: "bg-red-400",    label: "주택",  value: `${livingCount}개` },
-            { dot: "bg-amber-400",  label: "상업",  value: `${commercialCount}개` },
+            { dot: "bg-bronze-400", label: "완료",     value: `${completedCount}건` },
+            { dot: "bg-green-400",  label: "진행중",   value: `${inProgressCount}건` },
+            { dot: "bg-red-400",    label: "주택",     value: `${livingCount}개` },
+            { dot: "bg-amber-400",  label: "상업",     value: `${commercialCount}개` },
+            { dot: "bg-blue-400",   label: "오피스텔", value: `${officetelCount}개` },
           ].map(({ dot, label, value }) => (
             <div
               key={label}
@@ -261,7 +269,7 @@ const Portfolio = () => {
         <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
           {filterButtons.map((btn) => {
             const isActive =
-              (btn.id === "all" && filters.length === 2) ||
+              (btn.id === "all" && filters.length === ALL_TYPES.length) ||
               filters.includes(btn.id);
             return (
               <button
@@ -301,7 +309,7 @@ const Portfolio = () => {
                   src:
                     property.status === "inProgress"
                       ? markerSources.inProgress
-                      : markerSources[property.type],
+                      : markerSources[property.filterTag || property.type],
                   size: { width: 42, height: 52 },
                 }}
                 title={property.title}
@@ -318,6 +326,9 @@ const Portfolio = () => {
               <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0" />상업시설
             </div>
             <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />오피스텔
+            </div>
+            <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-green-500 shrink-0" />진행중
             </div>
           </div>
@@ -326,18 +337,38 @@ const Portfolio = () => {
         </div>
 
         {/* ── Card grid ── */}
-        {filteredMarkers.length > 0 && (
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredMarkers.map((property) => (
-              <ProjectCard
-                key={property.id}
-                property={property}
-                isSelected={selectedProperty?.id === property.id}
-                onClick={handleCardClick}
-              />
-            ))}
-          </div>
-        )}
+        {filteredMarkers.length > 0 && (() => {
+          const completed   = filteredMarkers.filter(p => p.status === "completed");
+          const inProgress  = filteredMarkers.filter(p => p.status === "inProgress");
+          return (
+            <>
+              {completed.length > 0 && (
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {completed.map((property) => (
+                    <ProjectCard
+                      key={property.id}
+                      property={property}
+                      isSelected={selectedProperty?.id === property.id}
+                      onClick={handleCardClick}
+                    />
+                  ))}
+                </div>
+              )}
+              {inProgress.length > 0 && (
+                <div className={`grid gap-3 mt-3 ${inProgress.length === 1 ? "grid-cols-1 max-w-sm" : "grid-cols-1 sm:grid-cols-2"}`}>
+                  {inProgress.map((property) => (
+                    <ProjectCard
+                      key={property.id}
+                      property={property}
+                      isSelected={selectedProperty?.id === property.id}
+                      onClick={handleCardClick}
+                    />
+                  ))}
+                </div>
+              )}
+            </>
+          );
+        })()}
       </div>
     </section>
   );

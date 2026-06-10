@@ -2,13 +2,14 @@
   "hero": {
     "eyebrow": "Since 1992",
     "tagline": "Developing Spaces<br />Defining Futures",
-    "description": "From residential construction to commercial and resort development, we create valuable spaces backed by over 30 years of expertise.",
+    "description": "From residential to commercial development, we deliver high-value projects backed by over 30 years of expertise and a proven track record.",
     "ctaPartnership": "Partnership Inquiry",
+    "ctaIR": "Request IR Materials",
     "stats": [
       { "value": "₩1T+", "label": "Cumulative Investment", "sub": "Since 1992" },
       { "value": "30+", "label": "Years of Experience", "sub": "Real Estate Development" },
-      { "value": "10+", "label": "Completed Projects", "sub": "Nationwide" },
-      { "value": "4", "label": "Business Areas", "sub": "Living·Commercial·Resort·Consulting" }
+      { "value": "11", "label": "Completed Projects", "sub": "Nationwide" },
+      { "value": "5,100+", "label": "Units Developed", "sub": "Residential & Commercial" }
     ]
   },
 
@@ -66,7 +67,7 @@
     "title": "Featured Projects",
     "description": "Key project performance metrics including investment scale, size, and returns.",
     "cta": "View Full Portfolio",
-    "investment": "Investment",
+    "completionYear": "Completed",
     "scale": "Scale",
     "statusCompleted": "Completed",
     "statusInProgress": "In Progress",

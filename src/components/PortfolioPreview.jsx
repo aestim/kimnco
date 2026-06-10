@@ -74,13 +74,10 @@ const PortfolioPreview = () => {
                     <div className="grid grid-cols-3 gap-4">
                       <div>
                         <p className="text-xs font-semibold uppercase tracking-wider text-silver-500">
-                          {t("portfolioPreview.investment")}
+                          {t("portfolioPreview.completionYear")}
                         </p>
-                        <p className="mt-1 text-lg font-bold text-bronze-400 md:text-xl">
-                          {project.investment}
-                          <span className="ml-0.5 text-sm font-medium text-silver-400">
-                            {project.investmentUnit}
-                          </span>
+                        <p className="mt-1 text-lg font-bold text-white md:text-xl">
+                          {project.completionYear}
                         </p>
                       </div>
                       <div>
@@ -95,7 +92,7 @@ const PortfolioPreview = () => {
                         <p className="text-xs font-semibold uppercase tracking-wider text-silver-500">
                           {t(`portfolioPreview.metrics.${project.returnLabelKey}`)}
                         </p>
-                        <p className="mt-1 text-lg font-bold text-white md:text-xl">
+                        <p className="mt-1 text-lg font-bold text-yellow-400 md:text-xl">
                           {project.returnRate}
                         </p>
                       </div>

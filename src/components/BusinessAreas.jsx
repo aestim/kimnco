@@ -17,16 +17,10 @@ const areas = [
     reverse: true,
   },
   {
-    key: "resorts",
-    poster: "/img/poster3.png",
-    propertyType: "resorts",
-    reverse: false,
-  },
-  {
     key: "consulting",
-    poster: "/img/poster4.png",
+    poster: "/img/poster3.png",
     propertyType: null,
-    reverse: true,
+    reverse: false,
   },
 ];
 

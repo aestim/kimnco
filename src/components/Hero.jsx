@@ -37,12 +37,18 @@ const Hero = () => {
             {t("hero.description")}
           </p>
 
-          <div className="mt-10">
+          <div className="mt-10 flex flex-wrap gap-4">
             <Link
               to={`/${currentLang}/contact?intent=partnership`}
               className="inline-flex items-center justify-center rounded-full bg-bronze-500 px-10 py-4 text-sm font-bold uppercase tracking-wider text-midnight-950 transition-colors hover:bg-bronze-400"
             >
               {t("hero.ctaPartnership")}
+            </Link>
+            <Link
+              to={`/${currentLang}/contact?intent=ir`}
+              className="inline-flex items-center justify-center rounded-full border border-white/30 px-10 py-4 text-sm font-bold uppercase tracking-wider text-white transition-colors hover:border-white/60 hover:bg-white/10"
+            >
+              {t("hero.ctaIR")}
             </Link>
           </div>
         </div>
@@ -54,7 +60,7 @@ const Hero = () => {
                 key={index}
                 className="rounded-2xl border border-white/10 bg-white/5 px-5 py-5 backdrop-blur-sm"
               >
-                <p className="font-zentry text-2xl font-bold text-bronze-400 md:text-3xl">
+                <p className="text-2xl font-bold text-bronze-400 md:text-3xl">
                   {stat.value}
                 </p>
                 <p className="mt-1 text-sm font-medium text-silver-200 break-keep">

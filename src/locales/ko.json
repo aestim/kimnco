@@ -2,13 +2,14 @@
   "hero": {
     "eyebrow": "Since 1992",
     "tagline": "공간의 혁신<br />미래의 창조",
-    "description": "주택건설부터 상업·리조트 개발까지, 30년 이상 쌓아온 노하우로 가치 있는 공간을 만들어갑니다.",
+    "description": "주택·상업시설 개발부터 컨설팅까지, 30년 이상의 검증된 실적으로 가치 있는 공간을 시행합니다.",
     "ctaPartnership": "파트너십 문의",
+    "ctaIR": "IR 자료 요청",
     "stats": [
       { "value": "1조+", "label": "누적 사업비", "sub": "1992년 이후" },
       { "value": "30+", "label": "년 업력", "sub": "부동산 개발 전문" },
-      { "value": "10+", "label": "완료 프로젝트", "sub": "전국 주요 입지" },
-      { "value": "4", "label": "사업분야", "sub": "주택·상업·리조트·컨설팅" }
+      { "value": "11건", "label": "완료 프로젝트", "sub": "전국 주요 입지" },
+      { "value": "5,100+", "label": "개발 세대·호", "sub": "주택·오피스텔 누적" }
     ]
   },
 
@@ -66,7 +67,7 @@
     "title": "주요 프로젝트",
     "description": "사업비·규모·수익 지표 중심으로 대표 프로젝트 실적을 소개합니다.",
     "cta": "전체 포트폴리오 보기",
-    "investment": "사업비",
+    "completionYear": "완료년도",
     "scale": "규모",
     "statusCompleted": "완료",
     "statusInProgress": "진행중",

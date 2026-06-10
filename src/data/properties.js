@@ -84,7 +84,7 @@ export const properties = [
     url: "https://kko.to/Jllj2PQNor",
   },
   {
-    id: 9, type: "commercial", typeLabel: "오피스텔",
+    id: 9, type: "commercial", typeLabel: "상업시설",
     status: "completed", completionYear: "2012",
     scale: "오피스텔 41실", floors: "지하3/지상9층",
     location: "경기 용인시 수지구 상현동",
@@ -93,7 +93,7 @@ export const properties = [
     url: "https://map.kakao.com/?map_type=TYPE_MAP&itemId=18995819&urlLevel=1&urlX=515491&urlY=1055256",
   },
   {
-    id: 10, type: "commercial", typeLabel: "오피스텔",
+    id: 10, type: "commercial", typeLabel: "상업시설",
     status: "completed", completionYear: "2015",
     scale: "오피스텔 100실", floors: "지하5/지상9층",
     location: "경기 수원시 영통구 이의동",

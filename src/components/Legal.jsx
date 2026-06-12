@@ -35,101 +35,73 @@ const LegalPage = () => {
     </section>
   );
 
-  // Content for the Privacy Policy tab
-  const PrivacyContent = () => (
-    <div className="mt-12 text-left">
-      <p className="mb-4">{t('privacy.intro_p1')}</p>
-      <p className="mb-8">{t('privacy.intro_p2')}</p>
+  // Content for the Privacy Policy tab — rendered generically from locale data
+  const PrivacyContent = () => {
+    const sections = t('privacy.sections', { returnObjects: true });
+    const officer = t('privacy.officer', { returnObjects: true });
+    const remedies = t('privacy.remedies', { returnObjects: true });
+    const change = t('privacy.change', { returnObjects: true });
+    const tocItems = [
+      ...sections.map((s) => s.title),
+      officer.title,
+      remedies.title,
+      change.title,
+    ];
 
-      {/* Table of Contents */}
-      <div className="mb-12 p-6 bg-gray-900/50 border border-gray-700 rounded-lg">
-        <h3 className="text-lg font-semibold text-gray-200 mb-3">{t('privacy.contents_title')}</h3>
-        <ol className="list-decimal list-inside space-y-2 text-gray-400">
-          {t('privacy.contents', { returnObjects: true }).map((item, index) => (
-            <li key={index}>{item.substring(item.indexOf(' ') + 1)}</li>
-          ))}
-        </ol>
-      </div>
+    return (
+      <div className="mt-12 text-left">
+        <p className="mb-8">{t('privacy.intro_p1')}</p>
 
-      {/* Dynamic Sections from JSON */}
-      <PolicySection title={t('privacy.section1.title')}>
-        <h3 className="text-lg font-semibold text-gray-300 mb-2">{t('privacy.section1.subtitle_a')}</h3>
-        <p>{t('privacy.section1.p1_a')}</p>
-        <p className="text-sm text-gray-500">{t('privacy.section1.p2_a')}</p>
-        <h3 className="text-lg font-semibold text-gray-300 mt-6 mb-2">{t('privacy.section1.subtitle_b')}</h3>
-        <p>{t('privacy.section1.p1_b')}</p>
-        <ul className="list-disc list-inside pl-4 space-y-1">
-          {t('privacy.section1.list_b', { returnObjects: true }).map((item, index) => <li key={index}>{item}</li>)}
-        </ul>
-      </PolicySection>
-      
-      <PolicySection title={t('privacy.section2.title')}>
-        <p>{t('privacy.section2.p1')}</p>
-        <h3 className="text-lg font-semibold text-gray-300 mt-6 mb-2">{t('privacy.section2.subtitle_a')}</h3>
-        <p>{t('privacy.section2.p1_a')}</p>
-        <h3 className="text-lg font-semibold text-gray-300 mt-6 mb-2">{t('privacy.section2.subtitle_b')}</h3>
-        <p>{t('privacy.section2.p1_b')}</p>
-        <h3 className="text-lg font-semibold text-gray-300 mt-6 mb-2">{t('privacy.section2.subtitle_c')}</h3>
-        <p>{t('privacy.section2.p1_c')}</p>
-      </PolicySection>
-
-      <PolicySection title={t('privacy.section3.title')}>
-        <p>{t('privacy.section3.p1')}</p>
-        <ul className="list-disc list-inside pl-4 space-y-1 mt-4">
-            {t('privacy.section3.list', { returnObjects: true }).map((item, index) => <li key={index}>{item}</li>)}
-        </ul>
-      </PolicySection>
-      
-      <PolicySection title={t('privacy.section4.title')}>
-        <p>{t('privacy.section4.p1')}</p>
-      </PolicySection>
-
-      <PolicySection title={t('privacy.section5.title')}>
-        <p>{t('privacy.section5.p1')}</p>
-        <h3 className="text-lg font-semibold text-gray-300 mt-6 mb-2">{t('privacy.section5.subtitle_a')}</h3>
-        <ul className="list-disc list-inside pl-4 space-y-1">
-            {t('privacy.section5.list_a', { returnObjects: true }).map((item, index) => <li key={index}>{item}</li>)}
-        </ul>
-        <h3 className="text-lg font-semibold text-gray-300 mt-6 mb-2">{t('privacy.section5.subtitle_b')}</h3>
-        <p>{t('privacy.section5.p1_b')}</p>
-        <ul className="list-disc list-inside pl-4 space-y-1 mt-4">
-            {t('privacy.section5.list_b', { returnObjects: true }).map((item, index) => <li key={index}>{item}</li>)}
-        </ul>
-      </PolicySection>
-
-      <PolicySection title={t('privacy.section6.title')}>
-        <p>{t('privacy.section6.p1')}</p>
-        <h3 className="text-lg font-semibold text-gray-300 mt-6 mb-2">{t('privacy.section6.subtitle_a')}</h3>
-        <p>{t('privacy.section6.p1_a')}</p>
-        <h3 className="text-lg font-semibold text-gray-300 mt-6 mb-2">{t('privacy.section6.subtitle_b')}</h3>
-        <p>{t('privacy.section6.p1_b')}</p>
-      </PolicySection>
-
-      <PolicySection title={t('privacy.section7.title')}>
-        <p>{t('privacy.section7.p1')}</p>
-      </PolicySection>
-
-      <PolicySection title={t('privacy.section8.title')}>
-        <p>{t('privacy.section8.p1')}</p>
-      </PolicySection>
-
-      <PolicySection title={t('privacy.section9.title')}>
-        <p>{t('privacy.section9.p1')}</p>
-        <div className="mt-4 p-4 bg-gray-900/50 rounded-md">
-            <h4 className="font-semibold text-gray-200">{t('privacy.section9.contact_title')}</h4>
-            <p>{t('privacy.section9.contact_name')}</p>
-            <p>{t('privacy.section9.contact_phone')}</p>
-            <p dangerouslySetInnerHTML={{ __html: t('privacy.section9.contact_email') }} />
+        {/* Table of Contents */}
+        <div className="mb-12 p-6 bg-gray-900/50 border border-gray-700 rounded-lg">
+          <h3 className="text-lg font-semibold text-gray-200 mb-3">{t('privacy.contents_title')}</h3>
+          <ol className="list-decimal list-inside space-y-2 text-gray-400">
+            {tocItems.map((item, index) => (
+              <li key={index}>{item.substring(item.indexOf(' ') + 1)}</li>
+            ))}
+          </ol>
         </div>
-        <p className="mt-4">{t('privacy.section9.p2')}</p>
-        <ul className="list-disc list-inside pl-4 space-y-1 mt-4">
-            {t('privacy.section9.org_list', { returnObjects: true }).map((item, index) => 
-                <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
+
+        {/* Numbered sections */}
+        {sections.map((section, index) => (
+          <PolicySection key={index} title={section.title}>
+            {(section.body || []).map((p, i) => <p key={`b${i}`}>{p}</p>)}
+            {section.list && (
+              <ul className="list-disc list-inside pl-4 space-y-1">
+                {section.list.map((item, i) => <li key={i}>{item}</li>)}
+              </ul>
             )}
-        </ul>
-      </PolicySection>
-    </div>
-  );
+            {(section.body2 || []).map((p, i) => <p key={`b2${i}`}>{p}</p>)}
+          </PolicySection>
+        ))}
+
+        {/* Privacy officer */}
+        <PolicySection title={officer.title}>
+          <p>{officer.p1}</p>
+          <div className="mt-4 p-4 bg-gray-900/50 rounded-md space-y-1">
+            {officer.rows.map((row, i) => <p key={i}>{row}</p>)}
+            <p dangerouslySetInnerHTML={{ __html: officer.email_html }} />
+          </div>
+        </PolicySection>
+
+        {/* Remedies */}
+        <PolicySection title={remedies.title}>
+          <p>{remedies.p1}</p>
+          <ul className="list-disc list-inside pl-4 space-y-1 mt-4">
+            {remedies.orgs_html.map((item, index) => (
+              <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
+            ))}
+          </ul>
+        </PolicySection>
+
+        {/* Policy changes */}
+        <PolicySection title={change.title}>
+          <p>{change.p1}</p>
+          <p className="text-sm text-gray-500">{change.effective}</p>
+        </PolicySection>
+      </div>
+    );
+  };
 
   // Content for the "Refusal of Unauthorized Email Collection" tab
   const NoEmailContent = () => (

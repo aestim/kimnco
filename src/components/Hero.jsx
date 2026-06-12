@@ -21,7 +21,7 @@ const Hero = () => {
       <video
         ref={videoRef}
         src="/videos/hero.mp4"
-        poster="/img/poster1.png"
+        poster="/img/hero-poster.webp"
         loop
         autoPlay
         muted

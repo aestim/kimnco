@@ -6,19 +6,19 @@ import ScrollReveal from "./ScrollReveal";
 const areas = [
   {
     key: "living",
-    poster: "/img/poster1.png",
+    poster: "/img/portfolio/living-1.webp",
     propertyType: "living",
     reverse: false,
   },
   {
     key: "commercial",
-    poster: "/img/poster2.png",
+    poster: "/img/portfolio/commercial-3.webp",
     propertyType: "commercial",
     reverse: true,
   },
   {
     key: "consulting",
-    poster: "/img/poster3.png",
+    poster: "/img/poster2.webp",
     propertyType: null,
     reverse: false,
   },

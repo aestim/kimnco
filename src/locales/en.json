@@ -6,25 +6,40 @@
     "ctaPartnership": "Partnership Inquiry",
     "ctaIR": "Request IR Materials",
     "stats": [
-      { "value": "₩1T+", "label": "Cumulative Investment", "sub": "Since 1992" },
-      { "value": "30+", "label": "Years of Experience", "sub": "Real Estate Development" },
-      { "value": "11", "label": "Completed Projects", "sub": "Nationwide" },
-      { "value": "5,100+", "label": "Units Developed", "sub": "Residential & Commercial" }
+      {
+        "value": "₩1T+",
+        "label": "Cumulative Investment",
+        "sub": "Since 1992"
+      },
+      {
+        "value": "30+",
+        "label": "Years of Experience",
+        "sub": "Real Estate Development"
+      },
+      {
+        "value": "11",
+        "label": "Completed Projects",
+        "sub": "Nationwide"
+      },
+      {
+        "value": "5,100+",
+        "label": "Units Developed",
+        "sub": "Residential & Commercial"
+      }
     ]
   },
-
   "intro": {
     "eyebrow": "About Us",
     "title": "Real Estate Development Built on Trust",
-    "description": "We uncover future-valuable land, create dream residential spaces, and build lasting trust with every client.",
+    "description": "We identify land with strong future value, create exceptional residential spaces, and build lasting trust with every client.",
     "values": [
       {
         "title": "Land Discovery",
-        "text": "We identify high-potential locations and establish a foundation for sustainable development."
+        "text": "We identify high-potential locations and lay the foundation for sustainable development."
       },
       {
         "title": "Space Creation",
-        "text": "We enhance quality of life through residential, commercial, and resort developments."
+        "text": "We enhance quality of life through residential and commercial developments."
       },
       {
         "title": "Trusted Management",
@@ -32,36 +47,29 @@
       }
     ]
   },
-
   "business": {
     "eyebrow": "Business",
     "title": "Business Areas",
-    "description": "A comprehensive real estate company spanning residential construction, urban development, resorts, and consulting.",
+    "description": "A comprehensive real estate company spanning residential construction, urban development, and consulting.",
     "cta": "View Projects",
     "areas": {
       "living": {
         "label": "Residential",
         "title": "Living",
-        "text": "We create residential spaces where your dreams become reality, elevating the value of your life."
+        "text": "We create residential spaces where dreams become reality and everyday life is enriched."
       },
       "commercial": {
         "label": "Commercial",
         "title": "Commercial",
         "text": "We create new value through efficient work environments and revitalized commercial districts."
       },
-      "resorts": {
-        "label": "Resort",
-        "title": "Resorts",
-        "text": "We introduce future-oriented resorts that offer perfect relaxation from daily stress."
-      },
       "consulting": {
         "label": "Consulting",
         "title": "Consulting",
-        "text": "We help you uncover future-valuable land and reap the abundant fruits of success."
+        "text": "We help you identify high-potential land and turn it into successful developments."
       }
     }
   },
-
   "portfolioPreview": {
     "eyebrow": "Projects",
     "title": "Featured Projects",
@@ -77,55 +85,57 @@
       "returnRate": "Return"
     }
   },
-
   "chairman": {
     "subtitle": "Leadership",
     "title": "Chairman's Profile",
     "description": "Leading Kim & Co with industry-recognized achievements and a commitment to excellence.",
-    "message": "Since founding in 1992, he has represented the industry as a director of the Korea Housing Association and earned numerous honors including a Minister of Land award and exemplary taxpayer recognition. Kim & Co continues to earn partner and investor trust through transparent operations and proven development results.",
+    "message": "Since founding the company in 1992, he has devoted more than three decades to real estate development, serving as a director of the Korea Housing Builders Association and earning honors including a ministerial commendation and exemplary-taxpayer recognition. Kim & Co continues to earn the trust of partners and investors through transparent operations and proven results.",
     "name": "Kim Gyu-cheol",
     "role": "Chairman, Kim & Co., Ltd.",
     "achievements": [
-      "Director, Korea Housing Association (2019–2025)",
+      "Director, Korea Housing Builders Association (2019–2025)",
       "Selected as Exemplary Taxpayer by the National Tax Service",
       "Commendation for Housing Welfare from the Gyeonggi Provincial Office",
       "Government Award from the Minister of Land, Infrastructure and Transport for Contributions to Housing Industry Development"
     ]
   },
-
   "partners": {
     "eyebrow": "Partners",
     "title": "Our Partners",
     "subtitle": "Growing together with trusted partners"
   },
-
   "nav": [
-    {"text": "About", "id": "intro", "type": "anchor"},
-    {"text": "Projects", "id": "projects", "type": "anchor"},
-    {"text": "Business", "id": "business", "type": "anchor"},
-    {"text": "History", "id": "history", "type": "anchor"},
-    {"text": "Portfolio", "id": "portfolio", "type": "route"},
-    {"text": "Contact", "id": "contact", "type": "route"}
+    {
+      "text": "About",
+      "id": "intro",
+      "type": "anchor"
+    },
+    {
+      "text": "Projects",
+      "id": "projects",
+      "type": "anchor"
+    },
+    {
+      "text": "Business",
+      "id": "business",
+      "type": "anchor"
+    },
+    {
+      "text": "History",
+      "id": "history",
+      "type": "anchor"
+    },
+    {
+      "text": "Portfolio",
+      "id": "portfolio",
+      "type": "route"
+    },
+    {
+      "text": "Contact",
+      "id": "contact",
+      "type": "route"
+    }
   ],
-
-  "features": {
-    "intro-title": "Business Areas",
-    "intro-text": "We are a comprehensive real estate company encompassing residential construction, urban station area development, resort development, and real estate consulting. We contribute to enhancing our clients' value and lifestyles, and we create a sustainable future with an innovative approach.",
-    "feature-button": "Learn More",
-    "feature1-title": "Living",
-    "feature1-text": "We create residential spaces where your dreams become reality, elevating the value of your life.",
-
-    "feature2-title": "Commercial",
-    "feature2-text": "We create new value through efficient work environments and revitalized commercial districts.",
-
-    "feature3-title": "Resorts",
-    "feature3-text": "We introduce future-oriented resorts that offer perfect relaxation from daily stress.",
-
-    "feature4-title": "Consulting",
-    "feature4-text": "We help you uncover future-valuable land and reap the abundant fruits of success.",
-    "logo": "Partners"
-  },
-
   "portfolio": {
     "title": "Our Portfolio",
     "all": "All",
@@ -133,18 +143,41 @@
     "commercial": "Commercial",
     "resorts": "Resorts"
   },
-
   "timeline": {
     "mainTitle": "History",
     "subtitle": "Our Heritage",
     "briefDescription": "Key milestones in Kim & Co's journey since 1992.",
     "highlights": [
-      { "year": "1992", "title": "Woongbo Development Co., Ltd. established", "detail": "Housing construction" },
-      { "year": "2003", "title": "Kim & Co., Ltd. established", "detail": "Housing construction" },
-      { "year": "2017", "title": "Merger of 4 affiliates", "detail": "Management, landscaping, I&D, South Pacific" },
-      { "year": "2019", "title": "Kim & Co. Holdings established", "detail": "Real estate development & sales" },
-      { "year": "2022", "title": "K&K Co., Ltd. established", "detail": "Residential development & supply" },
-      { "year": "2024", "title": "K-Tower Geomdan established", "detail": "Incheon Geomdan new city development" }
+      {
+        "year": "1992",
+        "title": "Woongbo Development Co., Ltd. established",
+        "detail": "Housing construction"
+      },
+      {
+        "year": "2003",
+        "title": "Kim & Co., Ltd. established",
+        "detail": "Housing construction"
+      },
+      {
+        "year": "2017",
+        "title": "Merger of 4 affiliates",
+        "detail": "Management, landscaping, I&D, South Pacific"
+      },
+      {
+        "year": "2019",
+        "title": "Kim & Co. Holdings established",
+        "detail": "Real estate development & sales"
+      },
+      {
+        "year": "2022",
+        "title": "K&K Co., Ltd. established",
+        "detail": "Residential development & supply"
+      },
+      {
+        "year": "2024",
+        "title": "K-Tower Geomdan established",
+        "detail": "Incheon Geomdan new city development"
+      }
     ],
     "decades": {
       "2020s": [
@@ -251,19 +284,25 @@
       ]
     }
   },
-
   "cta": {
-    "title": "Together with Trusted Partners",
+    "title": "Partner with a Proven Developer",
     "button": "Contact"
   },
-
-
   "footer": {
     "quickLinks": "Quick Links",
     "links": [
-      {"text": "Contact", "id": "contact" },
-      {"text": "Privacy Policy", "id": "privacyPolicy" },
-      {"text": "No Email Collection", "id": "noEmail" }
+      {
+        "text": "Contact",
+        "id": "contact"
+      },
+      {
+        "text": "Privacy Policy",
+        "id": "privacyPolicy"
+      },
+      {
+        "text": "No Email Collection",
+        "id": "noEmail"
+      }
     ],
     "companyNameShort": "Kim & Co Inc.",
     "contact": "Contact",
@@ -275,10 +314,9 @@
     "telNo": "+82-31-714-5567",
     "fax": "FAX",
     "faxNo": "+82-31-713-1121",
-    "addressDetail": "Kim&Co Cityheim 2 #401, 46 Daehak-ro, Yeongtong-gu, Suwon-si, Gyeonggi-do",
+    "addressDetail": "Kim&Co Cityheim 2, #401, 46 Daehak-ro, Yeongtong-gu, Suwon-si, Gyeonggi-do, Republic of Korea",
     "businessNumber": "Business registration number"
   },
-
   "contact": {
     "mainTitle": "Get in Touch",
     "description": "For professional inquiries or collaboration, please feel free to reach out.",
@@ -299,116 +337,123 @@
     }
   },
   "privacy": {
-    "title": "개인정보 처리방침",
-    "intro_p1": "㈜킴앤코(이하 “회사”라 함)은 통신비밀보호법, 전기통신사업법, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 등 정보통신서비스제공자가 준수하여야 할 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보취급 방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다.",
-    "intro_p2": "회사의 개인정보취급방침은 관련 법률 및 지침에 따라 변경될 수 있고 개정의 경우 7일전에 홈페이지를 통해 고지할 것 입니다. 회사의 개인정보취급방침은 다음과 같은 내용을 담고 있습니다.",
-    "contents_title": "목차",
-    "contents": [
-      "1. 수집하는 개인정보의 항목 및 수집방법",
-      "2. 개인정보의 수집 및 이용목적",
-      "3. 개인정보 제공 및 공유",
-      "4. 수집한 개인정보의 취급위탁",
-      "5. 개인정보의 보유 및 이용기간",
-      "6. 개인정보 파기절차 및 방법",
-      "7. 이용자 및 법정대리인의 권리와 그 행사방법",
-      "8. 개인정보 자동 수집 장치의 설치/운영 및 그 거부에 관한 사항",
-      "9. 개인정보관리책임자 등"
+    "title": "Privacy Policy",
+    "intro_p1": "Kim & Co., Ltd. (the 'Company') complies with the Personal Information Protection Act of Korea and other applicable laws, and establishes and discloses this privacy policy to protect users' personal information.",
+    "contents_title": "Contents",
+    "sections": [
+      {
+        "title": "1. Information We Collect and How",
+        "body": [
+          "The Company collects the following information through the contact form on this website."
+        ],
+        "list": [
+          "Required: name, email address, and the content of your inquiry",
+          "If you voluntarily include additional personal information (such as a phone number) in your message, it will be collected as part of your inquiry."
+        ],
+        "body2": [
+          "The Company does not operate user accounts and does not use cookies or other automatic data collection tools. Your language preference is stored only in your browser and is not transmitted to the Company."
+        ]
+      },
+      {
+        "title": "2. Purpose of Collection and Use",
+        "body": [
+          "Collected information is used solely to receive and respond to inquiries, including those regarding partnerships, investment, and sales."
+        ]
+      },
+      {
+        "title": "3. Retention Period",
+        "body": [
+          "Inquiry data is retained for one year after the inquiry is resolved and then deleted without delay, unless a longer retention period is required by applicable law."
+        ]
+      },
+      {
+        "title": "4. Provision to Third Parties",
+        "body": [
+          "The Company does not provide personal information to third parties, except in the following cases:"
+        ],
+        "list": [
+          "When the user has given prior consent",
+          "When requested by investigative or government agencies through lawful procedures"
+        ]
+      },
+      {
+        "title": "5. Outsourcing and Overseas Transfer",
+        "body": [
+          "The Company outsources the following processing tasks, in the course of which personal information may be transferred overseas:"
+        ],
+        "list": [
+          "Inquiry email delivery: EmailJS Inc. (USA) — information entered in the contact form is transmitted upon submission",
+          "Website hosting: Vercel Inc. (USA)"
+        ]
+      },
+      {
+        "title": "6. Destruction of Personal Information",
+        "body": [
+          "Personal information is destroyed without delay once the purpose of collection has been fulfilled. Electronic files are deleted using methods that prevent recovery, and paper documents are shredded or incinerated."
+        ]
+      },
+      {
+        "title": "7. Your Rights",
+        "body": [
+          "You may request access to, correction or deletion of, or suspension of processing of your personal information at any time by contacting the privacy officer below in writing, by phone, or by email."
+        ]
+      },
+      {
+        "title": "8. Security Measures",
+        "body": [
+          "The Company limits access to personal information to the minimum necessary personnel and applies safeguards such as encryption in transit (HTTPS)."
+        ]
+      }
     ],
-    "section1": {
-      "title": "1. 수집하는 개인정보의 항목 및 수집방법",
-      "subtitle_a": "가. 수집하는 개인정보의 항목",
-      "p1_a": "회사는 회원가입, 상담, 서비스 신청 및 제공 등을 위해 아래와 같은 개인정보를 수집하고 있습니다. 이름, 이메일, 주민등록번호, 주소, 연락처, 핸드폰 번호, 아이디, 비밀번호 또한 서비스 이용과정이나 사업 처리 과정에서 아래와 같은 정보들이 생성되어 수집될 수 있습니다.",
-      "p2_a": "서비스 이용기록, 접속 로그, 쿠키, 접속 IP 정보, 방문일시, 브라우저종류 및 os, 검색어, 결제기록, 이용정지 기록, 상담기록",
-      "subtitle_b": "나. 개인정보 수집 방법",
-      "p1_b": "회사는 다음과 같은 방법으로 개인정보를 수집합니다.",
-      "list_b": [
-        "홈페이지, 서면양식, 전화/팩스를 통한 회원가입, 상담 게시판, 경품 행사 응모, 배송 요청",
-        "협력회사 또는 제휴사로 부터의 제공",
-        "생성정보 수집 툴을 통한 수집"
+    "officer": {
+      "title": "9. Privacy Officer",
+      "p1": "The Company has designated the following privacy officer and staff to oversee personal information processing and handle related inquiries and complaints.",
+      "rows": [
+        "Chief Privacy Officer: Kyuchul Kim (CEO)",
+        "Privacy Staff: Minsung Kim",
+        "Tel: +82-31-714-5567"
+      ],
+      "email_html": "Email: <a href='mailto:master@kimnco.co.kr' class='text-blue-400 hover:underline'>master@kimnco.co.kr</a>"
+    },
+    "remedies": {
+      "title": "10. Remedies for Infringement",
+      "p1": "If you need to report or consult on a personal information infringement, you may contact the following Korean authorities.",
+      "orgs_html": [
+        "Personal Information Dispute Mediation Committee (<a href='https://www.kopico.go.kr' target='_blank' rel='noopener noreferrer' class='text-blue-400 hover:underline'>www.kopico.go.kr</a> / +82-1833-6972)",
+        "KISA Privacy Infringement Report Center (<a href='https://privacy.kisa.or.kr' target='_blank' rel='noopener noreferrer' class='text-blue-400 hover:underline'>privacy.kisa.or.kr</a> / 118 in Korea)",
+        "Supreme Prosecutors' Office (<a href='https://www.spo.go.kr' target='_blank' rel='noopener noreferrer' class='text-blue-400 hover:underline'>www.spo.go.kr</a> / 1301)",
+        "National Police Agency Cyber Bureau (<a href='https://ecrm.police.go.kr' target='_blank' rel='noopener noreferrer' class='text-blue-400 hover:underline'>ecrm.police.go.kr</a> / 182)"
       ]
     },
-    "section2": {
-      "title": "2. 개인정보의 수집 및 이용목적",
-      "p1": "회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.",
-      "subtitle_a": "가. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산",
-      "p1_a": "콘텐츠 제공, 물품배송 또는 청구서 등 발송, 금융거래 본인 인증 및 금융 서비스, 구매 및 요금 결재, 요금추심",
-      "subtitle_b": "나. 회원 관리",
-      "p1_b": "회원제 서비스 이용에 따른 본인확인, 개인식별, 불량회원의 부정 이용 방지와 비인가 사용 방지, 가입 의사 확인, 가입 및 가입횟수 제한, 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 추후 법정 대리인 본인확인, 분쟁 조정을 위한 기록보존, 불만처리 등 민원처리, 고지사항 전달",
-      "subtitle_c": "다. 마케팅 및 광고에 활용",
-      "p1_c": "신규 서비스(제품) 개발 및 특화, 인구통계학적 특성에 따른 서비스 제공 및 광고 게재, 접속 빈도 파악, 회원의 서비스 이용에 대한 통계, 이벤트 등 광고성 정보 전달"
-    },
-    "section3": {
-        "title": "3. 개인정보 제공 및 공유",
-        "p1": "회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.",
-        "list": [
-            "이용자들이 사전에 공개에 동의한 경우",
-            "서비스 제공에 따른 요금정산을 위하여 필요한 경우",
-            "홈페이지에 게시한 서비스 이용 약관 및 기타 회원 서비스 등의 이용약관 또는 운영원칙을 위반한 경우",
-            "관련법에 의거 적법한 절차에 의한 정부/수사기관의 요청이 있는 경우",
-            "통계작성,학술연구나 시장조사를 위하여 특정개인을 식별할 수 없는 형태로 광고주, 협력업체나 연구단체 등에 제공하는 경우",
-            "이용자의 상품구매 시 구매상품별로 서비스 이행을 위한 용도로 정보를 제공 경우"
-        ]
-    },
-    "section4": {
-        "title": "4. 수집한 개인정보의 취급위탁",
-        "p1": "회사는 개인정보의 안전을 기하기 위하여 위탁계약을 통해 서비스제공자의 개인정보보호와 관련하여 지시엄수, 개인정보에 관한 비밀유지, 제3자 제공의 금지 및 사고시의 책임부담 등을 명확히 규정하고 있으며, 위탁관리회사의 운영상황을 관리 감독하고 있습니다."
-    },
-    "section5": {
-        "title": "5. 개인정보의 보유 및 이용기간",
-        "p1": "이용자의 개인정보는 원칙적으로 개인정보의 수집 및 이용목적이 달성되면 지체 없이 파기합니다. 단, 다음의 정보에 대해서는 아래의 이유로 명시한 기간 동안 보존합니다.",
-        "subtitle_a": "가. 회사 내부 방침에 의한 정보보유 사유",
-        "list_a": [
-            "부정이용기록",
-            "보존 이유 : 부정 이용 방지",
-            "보존 기간 : 1년"
-        ],
-        "subtitle_b": "나. 관련법령에 의한 정보보유 사유",
-        "p1_b": "상법, 전자상거래 등에서의 소비자보호에 관한 법률 등 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 관계법령에서 정한 일정한 기간 동안 회원정보를 보관합니다. 이 경우 회사는 보관하는 정보를 그 보관의 목적으로만 이용하며 보존기간은 아래와 같습니다.",
-        "list_b": [
-            "계약 또는 청약철회 등에 관한 기록 (보존 이유: 전자상거래 등에서의 소비자보호에 관한 법률, 보존 기간: 5년)",
-            "대금결제 및 재화 등의 공급에 관한 기록 (보존 이유: 전자상거래 등에서의 소비자보호에 관한 법률, 보존 기간: 5년)",
-            "소비자의 불만 또는 분쟁처리에 관한 기록 (보존 이유: 전자상거래 등에서의 소비자보호에 관한 법률, 보존 기간: 3년)",
-            "본인확인에 관한 기록 (보존 이유: 정보통신 이용촉진 및 정보보호 등에 관한 법률, 보존 기간: 6개월)",
-            "방문에 관한 기록 (보존 이유: 통신비밀보호법, 보존 기간: 3개월)"
-        ]
-    },
-    "section6": {
-        "title": "6. 개인정보 파기절차 및 방법",
-        "p1": "회사는 원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당 정보를 지체없이 파기합니다. 파기절차 및 방법은 다음과 같습니다.",
-        "subtitle_a": "가. 파기절차",
-        "p1_a": "이용자가 회원가입 등을 위해 입력하신 정보는 목적이 달성된 후 내부 방침 및 기타 관련 법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조) 일정 기간 저장된 후 파기되어집니다. 동 개인정보는 법률에 의한 경우가 아니고서는 보유되어지는 이외의 다른 목적으로 이용되지 않습니다.",
-        "subtitle_b": "나. 파기방법",
-        "p1_b": "종이에 출력된 개인정보는 분쇄기로 분쇄하거나 소각을 통하여 파기하고 전자적 파일형태로 저장된 개인정보는 기록을 재생할 수 없는 기술적 방법을 사용하여 삭제합니다."
-    },
-    "section7": {
-        "title": "7. 이용자 및 법정대리인의 권리와 그 행사방법",
-        "p1": "이용자는 등록되어 있는 자신의 개인정보를 조회하거나 수정할 수 있으며 삭제를 요청할 수도 있습니다. 이용자들의 개인정보 조회 및 수정을 위해서는 개인정보관리책임자에게 서면, 전화 또는 이메일로 연락하시면 지체 없이 조치하겠습니다. 이용자가 개인정보의 오류에 대한 정정을 요청한 경우에는 정정을 완료하기 전까지 당해 개인정보를 이용 또는 제공하지 않습니다. 또한 잘못된 개인정보를 제3자에게 이미 제공한 경우에는 정정 처리 결과를 제3자에게 지체 없이 통지하여 정정이 이루어지도록 하겠습니다. 회사는 이용자의 요청에 의해 해지 또는 삭제된 개인 정보는 ‘수집한 개인정보의 보유 및 이용기간’에 명시된 바에 따라 처리하고 그 외의 용도로 열람 또는 이용할 수 없도록 처리하고 있습니다."
-    },
-    "section8": {
-        "title": "8. 개인정보 자동 수집 장치의 설치/운영 및 그 거부에 관한 사항",
-        "p1": "개인의 정보를 수시로 저장하고 찾아내는 '쿠키(cookie)'를 운영하거나 활용하지 않습니다."
-    },
-    "section9": {
-        "title": "9. 개인정보관리책임자 등",
-        "p1": "회사는 고객의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여 아래와 같이 관련 부서 및 개인정보관리책임자를 지정하고 있습니다.",
-        "contact_title": "개인정보관리책임자/개인정보관리담당자",
-        "contact_name": "이름/직책 :",
-        "contact_phone": "전화번호 : 02-598-7835",
-        "contact_email": "이 메 일 : <a href='mailto:master@kimnco.co.kr' class='text-blue-400 hover:underline'>master@kimnco.co.kr</a>",
-        "p2": "귀하께서는 회사의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을 개인정보관리책임자 혹은 담당자에게 신고하실 수 있습니다. 회사는 이용자들의 신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다. 기타 개인정보침해에 대한 신고나 상담이 필요하신 경우에는 아래 기관에 문의하시기 바랍니다.",
-        "org_list": [
-            "개인분쟁조정위원회 (<a href='http://www.1336.or.kr' target='_blank' rel='noopener noreferrer' class='text-blue-400 hover:underline'>www.1336.or.kr</a> / 1336)",
-            "정보보호마크인증위원회 (<a href='http://www.eprivacy.or.kr' target='_blank' rel='noopener noreferrer' class='text-blue-400 hover:underline'>www.eprivacy.or.kr</a> / 02-580-0533~4)",
-            "대검찰청 인터넷범죄수사센터 (<a href='http://icic.sppo.go.kr' target='_blank' rel='noopener noreferrer' class='text-blue-400 hover:underline'>http://icic.sppo.go.kr</a> / 02-3480-3600)",
-            "경찰청 사이버테러대응센터 (<a href='http://www.ctrc.go.kr' target='_blank' rel='noopener noreferrer' class='text-blue-400 hover:underline'>http://www.ctrc.go.kr</a> / 02-392-0330)"
-        ]
+    "change": {
+      "title": "11. Changes to This Policy",
+      "p1": "Any changes to this privacy policy will be announced on this website at least seven days before they take effect.",
+      "effective": "Effective date: 12 June 2026"
     }
   },
   "noemail": {
-    "title": "이메일 무단수집거부",
-    "tabTitle": "이메일 무단수집거부",
-    "p1": "본 웹사이트에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여 무단으로 수집되는 것을 거부하며, 이를 위반시 정보통신망법에 의해 형사처벌됨을 유념하시기 바랍니다.",
-    "p2": "게시일: 2024년 06월 26일",
-    "postedDate": "게시일"
+    "title": "No Email Collection",
+    "tabTitle": "No Email Collection",
+    "p1": "We refuse the unauthorized collection of email addresses posted on this website by means of email-harvesting programs or any other technical devices. Violations are subject to criminal penalties under the Act on Promotion of Information and Communications Network Utilization and Information Protection of Korea.",
+    "p2": "Posted: 26 June 2024",
+    "postedDate": "Posted"
+  },
+  "seo": {
+    "home": {
+      "title": "Kim&Co | Real Estate Investment & Development",
+      "description": "Kim&Co has led integrated real estate investment and development since 1992. Explore our portfolio of residential and commercial projects."
+    },
+    "portfolio": {
+      "title": "Portfolio | Kim&Co Development Projects",
+      "description": "Browse Kim&Co's residential, commercial, officetel and resort development projects on an interactive map."
+    },
+    "contact": {
+      "title": "Contact | Kim&Co",
+      "description": "Get in touch with Kim&Co for partnerships, investor relations and sales inquiries."
+    },
+    "legal": {
+      "title": "Legal Notice | Kim&Co",
+      "description": "Privacy policy and legal notices for the Kim&Co website."
+    }
   }
 }

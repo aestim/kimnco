@@ -33,6 +33,14 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Honeypot: hidden field that humans never fill in. If it has a value,
+    // a bot submitted the form — silently pretend it succeeded.
+    if (formRef.current?.elements?.website?.value) {
+      toast.success(t("contact.successMessage"));
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -64,7 +72,7 @@ const Contact = () => {
         </p> */}
         <div className="text-center mb-16 text-silver-300"> {/* mb-12 to add space before form */}
           <p className="text-xl font-medium mb-3">
-            {t("footer.tel")}: <a href={`tel:${t("footer.telNo").replace(/\s/g, '').replace(/\+/g, '')}`} className="text-bronze-400 hover:text-bronze-300 transition-colors duration-200 font-manrope font-bold tracking-wide">{t("footer.telNo")}</a>
+            {t("footer.tel")}: <a href={`tel:${t("footer.telNo").replace(/[^+\d]/g, '')}`} className="text-bronze-400 hover:text-bronze-300 transition-colors duration-200 font-manrope font-bold tracking-wide">{t("footer.telNo")}</a>
           </p>
           <p className="text-xl font-medium">
             {t("footer.fax")}: {t("footer.faxNo")}
@@ -74,6 +82,15 @@ const Contact = () => {
         <div className="flex justify-center">
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-xl shadow-2xl p-8 sm:p-12 lg:p-16 w-full max-w-xl border border-slate-700/50 hover:border-bronze-500/30 transition-all duration-500">
             <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-8">
+              {/* Honeypot field — hidden from humans, catches spam bots */}
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="hidden"
+              />
               <div>
                 <label htmlFor="name" className="block text-silver-300 text-sm font-semibold mb-2 uppercase tracking-wider">
                   {t("contact.nameLabel")}

@@ -1,11 +1,13 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Routes, Route, useParams, useNavigate, Outlet } from 'react-router-dom';
+import { Routes, Route, useParams, useNavigate, useLocation, Outlet } from 'react-router-dom';
 
 import NavBar from "./components/Navbar";
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Loading from './components/Loading';
+import Seo from './components/Seo';
+import NotFound from './components/NotFound';
 
 // Lazy load page components
 const HomePage = lazy(() => import('./components/HomePage')); // You'll need to create this file or move the HomePage component
@@ -36,14 +38,17 @@ function LanguageLayout() {
   const { lang } = useParams();
   const { i18n } = useTranslation();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     // If the language in the URL is not supported, redirect to the default.
     if (!supportedLanguages.includes(lang)) {
-      console.warn(`Invalid language in URL (${lang}). Redirecting to /ko.`);
       navigate('/ko', { replace: true });
       return; // Stop further execution in this effect.
     }
+
+    // Keep <html lang> in sync for accessibility and SEO.
+    document.documentElement.lang = lang;
 
     // If the URL language is different from the active language, change it.
     if (i18n.language !== lang) {
@@ -57,9 +62,14 @@ function LanguageLayout() {
     return <Loading />;
   }
 
+  // Derive the current page from the path for per-page SEO tags.
+  const segment = pathname.split('/')[2] || '';
+  const seoPage = ['portfolio', 'contact', 'legal'].includes(segment) ? segment : 'home';
+
   // If the language is set correctly, render the main layout and the child route.
   return (
     <>
+      <Seo page={seoPage} lang={lang} />
       <ScrollToTop />
       <NavBar lang={lang} />
       {/* Outlet renders the matched child route (e.g., HomePage or PortfolioPage) */}
@@ -93,9 +103,11 @@ function App() {
           <Route path="contact" element={<Contact />} />
           {/* Add more pages here, e.g., <Route path="contact" element={<Contact />} /> */}
           <Route path="legal" element={<Legal />} />
+          {/* Unknown paths under a valid language show a 404 page */}
+          <Route path="*" element={<NotFound />} />
         </Route>
-        
-        {/* Optional: A catch-all route for any other invalid path */}
+
+        {/* Catch-all for paths without a language prefix */}
         <Route path="*" element={<RootRedirect />} />
 
       </Routes>

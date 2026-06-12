@@ -1,0 +1,13 @@
+// Cloudflare Workers (static assets) deployment config.
+// The dashboard git integration reads this — no preset/output-directory
+// fields needed in the UI.
+{
+  "name": "kimnco",
+  "compatibility_date": "2026-01-01",
+  "assets": {
+    "directory": "./dist",
+    // Unknown routes serve index.html with 200 (SPA fallback),
+    // same behavior as Cloudflare Pages / our previous Vercel rewrite.
+    "not_found_handling": "single-page-application"
+  }
+}

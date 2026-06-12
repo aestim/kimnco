@@ -132,7 +132,7 @@ export const properties = [
   imageCounters[property.type]++;
   return {
     ...property,
-    image: `/img/portfolio/${property.type}-${imageCounters[property.type]}.png`,
+    image: `/img/portfolio/${property.type}-${imageCounters[property.type]}.webp`,
   };
 });
 

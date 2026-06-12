@@ -32,7 +32,7 @@ const CompanyIntro = () => {
               <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-bronze-500/20 to-transparent blur-sm" />
               <div className="relative h-full overflow-hidden rounded-3xl border border-white/10 bg-slate-900">
                 <img
-                  src="/img/chairman.png"
+                  src="/img/chairman.webp"
                   alt={t("chairman.name")}
                   className="aspect-[3/4] w-full -scale-x-100 object-cover object-top lg:aspect-auto lg:h-full lg:min-h-[480px]"
                   loading="lazy"

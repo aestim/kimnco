@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/ko",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

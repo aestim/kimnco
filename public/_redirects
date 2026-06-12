@@ -1,0 +1,4 @@
+# Cloudflare Pages redirects
+# Root -> Korean home (permanent). Unknown routes fall back to the SPA
+# automatically (no 404.html present), so no catch-all rewrite is needed.
+/ /ko 308

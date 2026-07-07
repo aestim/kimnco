@@ -20,7 +20,7 @@ const logoIconsList = [
 const LogoIcon = ({ icon }) => {
   return (
     // Apply marquee-item here if you need specific styling on each item
-    <div className="flex-none flex items-center justify-center marquee-item">
+    <div className="marquee-item flex flex-none items-center justify-center">
       <img
         src={icon.imgPath}
         alt={`${icon.name} logo`}
@@ -33,9 +33,9 @@ const LogoIcon = ({ icon }) => {
 const LogoShowcase = ({ t }) => (
   // This outermost div defines the 'bento' width for the entire section.
   // Make sure 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8' matches your overall bento/container styling.
-  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div className="text-center">
-      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-silver-500 mb-8">
+      <p className="mb-8 text-sm font-semibold uppercase tracking-[0.2em] text-silver-500">
         {t}
       </p>
     </div>
@@ -44,8 +44,8 @@ const LogoShowcase = ({ t }) => (
     {/* It needs overflow-hidden to clip the scrolling content and relative for absolute gradients. */}
     <div className="relative overflow-hidden">
       {/* Gradients are absolute to this overflow-hidden container */}
-      <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-black to-transparent z-10" />
-      <div className="absolute top-0 bottom-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-10" />
+      <div className="absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-black to-transparent" />
+      <div className="absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-black to-transparent" />
 
       {/* The marquee itself */}
       <div className="marquee h-24"> {/* Height defined here, or in CSS */}

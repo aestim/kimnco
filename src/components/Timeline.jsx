@@ -7,7 +7,7 @@ const Timeline = () => {
   const highlights = t("timeline.highlights", { returnObjects: true });
 
   return (
-    <section id="history" className="section-padding bg-midnight-950 text-silver-100 font-manrope">
+    <section id="history" className="section-padding bg-midnight-950 font-manrope text-silver-100">
       <div className="section-container">
         <ScrollReveal>
           <SectionHeader
@@ -18,7 +18,7 @@ const Timeline = () => {
         </ScrollReveal>
 
         <div className="relative mx-auto max-w-3xl">
-          <div className="absolute left-[7px] top-2 bottom-2 w-px bg-bronze-500/30 md:left-1/2 md:-translate-x-px" />
+          <div className="absolute inset-y-2 left-[7px] w-px bg-bronze-500/30 md:left-1/2 md:-translate-x-px" />
 
           <div className="space-y-8">
             {Array.isArray(highlights) &&
@@ -31,7 +31,7 @@ const Timeline = () => {
                   >
                     <div className="hidden md:block md:w-1/2" />
 
-                    <div className="absolute left-0 z-10 h-4 w-4 rounded-full border-2 border-bronze-500 bg-midnight-950 md:left-1/2 md:-translate-x-2" />
+                    <div className="absolute left-0 z-10 size-4 rounded-full border-2 border-bronze-500 bg-midnight-950 md:left-1/2 md:-translate-x-2" />
 
                     <div
                       className={`ml-8 md:ml-0 md:w-1/2 ${
@@ -41,11 +41,11 @@ const Timeline = () => {
                       <span className="text-2xl font-bold text-bronze-400">
                         {item.year}
                       </span>
-                      <h3 className="mt-1 text-lg font-bold text-white break-keep">
+                      <h3 className="mt-1 break-keep text-lg font-bold text-white">
                         {item.title}
                       </h3>
                       {item.detail && (
-                        <p className="mt-1 text-sm text-silver-400 break-keep">
+                        <p className="mt-1 break-keep text-sm text-silver-400">
                           {item.detail}
                         </p>
                       )}

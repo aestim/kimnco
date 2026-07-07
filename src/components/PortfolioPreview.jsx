@@ -43,7 +43,7 @@ const PortfolioPreview = () => {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="aspect-[4/3] h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 md:aspect-auto md:min-h-[200px]"
+                      className="aspect-[4/3] size-full object-cover transition-transform duration-500 group-hover:scale-105 md:aspect-auto md:min-h-[200px]"
                       loading="lazy"
                     />
                     <span className="absolute left-4 top-4 rounded-full bg-black/60 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-bronze-300 backdrop-blur-sm">
@@ -51,9 +51,9 @@ const PortfolioPreview = () => {
                     </span>
                   </div>
 
-                  <div className="flex flex-col justify-center p-6 md:col-span-8 lg:col-span-9 md:p-8">
+                  <div className="flex flex-col justify-center p-6 md:col-span-8 md:p-8 lg:col-span-9">
                     <div className="mb-4 flex flex-wrap items-center gap-3">
-                      <h3 className="text-xl font-bold text-white md:text-2xl break-keep">
+                      <h3 className="break-keep text-xl font-bold text-white md:text-2xl">
                         {project.title}
                       </h3>
                       <span

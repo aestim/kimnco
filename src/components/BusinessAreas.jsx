@@ -70,7 +70,7 @@ const BusinessAreas = () => {
                     <h3 className="mb-4 text-3xl font-bold text-white md:text-4xl">
                       {t(`business.areas.${area.key}.title`)}
                     </h3>
-                    <p className="mb-8 text-lg leading-relaxed text-silver-400 break-keep">
+                    <p className="mb-8 break-keep text-lg leading-relaxed text-silver-400">
                       {t(`business.areas.${area.key}.text`)}
                     </p>
                     <Link

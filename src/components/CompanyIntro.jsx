@@ -25,7 +25,7 @@ const CompanyIntro = () => {
             </p>
             <p className="mt-1 text-bronze-400">{t("chairman.role")}</p>
           </ScrollReveal>
-          <div className="hidden lg:block lg:col-span-7" aria-hidden="true" />
+          <div className="hidden lg:col-span-7 lg:block" aria-hidden="true" />
 
           <ScrollReveal className="mx-auto w-full max-w-sm lg:col-span-5 lg:mx-0 lg:max-w-none">
             <div className="relative h-full">
@@ -43,7 +43,7 @@ const CompanyIntro = () => {
 
           <div className="flex flex-col justify-center gap-6 lg:col-span-7 lg:min-h-0 lg:self-stretch">
             <ScrollReveal delay={100}>
-              <p className="text-lg leading-relaxed text-silver-300 break-keep">
+              <p className="break-keep text-lg leading-relaxed text-silver-300">
                 {t("chairman.message")}
               </p>
             </ScrollReveal>
@@ -53,10 +53,10 @@ const CompanyIntro = () => {
                 achievements.map((achievement, index) => (
                   <ScrollReveal key={index} delay={150 + index * 60}>
                     <div className="card-surface flex items-start gap-4 p-5">
-                      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-bronze-500/15 text-sm text-bronze-400">
+                      <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-bronze-500/15 text-sm text-bronze-400">
                         ✦
                       </span>
-                      <p className="text-silver-100 leading-relaxed break-keep">
+                      <p className="break-keep leading-relaxed text-silver-100">
                         {achievement}
                       </p>
                     </div>
@@ -74,7 +74,7 @@ const CompanyIntro = () => {
                   <h3 className="mb-2 text-lg font-bold text-white">
                     {value.title}
                   </h3>
-                  <p className="text-sm leading-relaxed text-silver-400 break-keep">
+                  <p className="break-keep text-sm leading-relaxed text-silver-400">
                     {value.text}
                   </p>
                 </div>

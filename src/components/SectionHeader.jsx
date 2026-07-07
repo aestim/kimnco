@@ -4,24 +4,24 @@ const SectionHeader = ({ eyebrow, title, description, align = "center" }) => {
   return (
     <div className={`mb-14 md:mb-16 ${isCenter ? "text-center" : "text-left"}`}>
       {eyebrow && (
-        <p className="text-bronze-500 font-bold uppercase tracking-[0.2em] mb-4 text-sm">
+        <p className="mb-4 text-sm font-bold uppercase tracking-[0.2em] text-bronze-500">
           {eyebrow}
         </p>
       )}
-      <h2 className="text-3xl md:text-5xl font-zentry font-bold text-silver-100 mb-5 leading-tight">
+      <h2 className="mb-5 font-zentry text-3xl font-bold leading-tight text-silver-100 md:text-5xl">
         {title}
       </h2>
       {description && (
         <p
-          className={`text-silver-400 text-lg leading-relaxed break-keep ${
-            isCenter ? "max-w-2xl mx-auto" : "max-w-xl"
+          className={`break-keep text-lg leading-relaxed text-silver-400 ${
+            isCenter ? "mx-auto max-w-2xl" : "max-w-xl"
           }`}
         >
           {description}
         </p>
       )}
       <div
-        className={`w-16 h-1 bg-bronze-500 rounded-full mt-6 ${
+        className={`mt-6 h-1 w-16 rounded-full bg-bronze-500 ${
           isCenter ? "mx-auto" : ""
         }`}
       />

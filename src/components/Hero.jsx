@@ -27,11 +27,11 @@ const Hero = () => {
         muted
         playsInline
         preload="auto"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 size-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-midnight-950" />
 
-      <div className="relative z-10 flex min-h-dvh flex-col justify-center px-4 sm:px-8 lg:px-16 pt-24 pb-32">
+      <div className="relative z-10 flex min-h-dvh flex-col justify-center px-4 pb-32 pt-24 sm:px-8 lg:px-16">
         <div className="max-w-5xl">
           <p className="mb-4 text-sm font-semibold uppercase tracking-[0.35em] text-bronze-400">
             {t("hero.eyebrow")}
@@ -40,10 +40,10 @@ const Hero = () => {
             Kim &amp; Co
           </h1>
           <p
-            className="mt-6 max-w-xl text-xl font-medium leading-relaxed text-silver-200 md:text-2xl break-keep"
+            className="mt-6 max-w-xl break-keep text-xl font-medium leading-relaxed text-silver-200 md:text-2xl"
             dangerouslySetInnerHTML={{ __html: t("hero.tagline") }}
           />
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-silver-400 md:text-lg break-keep">
+          <p className="mt-4 max-w-2xl break-keep text-base leading-relaxed text-silver-400 md:text-lg">
             {t("hero.description")}
           </p>
 
@@ -68,16 +68,16 @@ const Hero = () => {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className="rounded-2xl border border-white/10 bg-white/5 px-5 py-5 backdrop-blur-sm"
+                className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm"
               >
                 <p className="text-2xl font-bold text-bronze-400 md:text-3xl">
                   {stat.value}
                 </p>
-                <p className="mt-1 text-sm font-medium text-silver-200 break-keep">
+                <p className="mt-1 break-keep text-sm font-medium text-silver-200">
                   {stat.label}
                 </p>
                 {stat.sub && (
-                  <p className="mt-0.5 text-xs text-silver-500 break-keep">
+                  <p className="mt-0.5 break-keep text-xs text-silver-500">
                     {stat.sub}
                   </p>
                 )}

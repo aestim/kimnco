@@ -10,7 +10,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom', 'react-router-dom', 'react-i18next', 'i18next'],
-          gsap: ['gsap', '@gsap/react'],
           maps: ['react-kakao-maps-sdk']
         }
       }

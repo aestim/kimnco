@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Map, MapMarker } from "react-kakao-maps-sdk";
+import { useState, useEffect, useRef } from "react";
+import { Map, MapMarker, useKakaoLoader } from "react-kakao-maps-sdk";
 import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import clsx from "clsx";
@@ -10,41 +10,46 @@ import { properties, markerSources } from "../data/properties";
 
 /* ───────────────────────── InfoWindow ───────────────────────── */
 const InfoWindow = ({ property, onClose }) => {
+  const { t } = useTranslation();
   if (!property) return null;
 
-  const statusLabel = property.status === "inProgress" ? "진행 중" : "완료";
+  const statusLabel = t(
+    property.status === "inProgress"
+      ? "portfolio.statusInProgress"
+      : "portfolio.statusCompleted"
+  );
 
   return (
-    <div className="absolute bottom-4 left-4 w-[calc(100%-2rem)] max-w-xs lg:bottom-auto lg:top-4 lg:w-72 z-20 animate-fade-in">
-      <div className="relative bg-[#1c1c1e] text-white rounded-2xl shadow-2xl border border-white/10 p-5">
+    <div className="absolute bottom-4 left-4 z-20 w-[calc(100%-2rem)] max-w-xs animate-fade-in lg:bottom-auto lg:top-4 lg:w-72">
+      <div className="relative rounded-2xl border border-white/10 bg-[#1c1c1e] p-5 text-white shadow-2xl">
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-400 hover:text-white transition-colors"
+          className="absolute right-3 top-3 text-gray-400 transition-colors hover:text-white"
           aria-label="Close"
         >
           <MdClose size={18} />
         </button>
 
-        <p className="text-xs text-gray-500 mb-1.5">
-          {statusLabel} · {property.typeLabel}
+        <p className="mb-1.5 text-xs text-gray-500">
+          {statusLabel} · {t(`portfolio.${property.filterTag || property.type}`)}
         </p>
-        <h3 className="font-bold text-base text-white leading-snug break-keep mb-1">
+        <h3 className="mb-1 break-keep text-base font-bold leading-snug text-white">
           {property.title}
         </h3>
-        <p className="text-xs text-gray-500 mb-4">{property.location}</p>
+        <p className="mb-4 text-xs text-gray-500">{property.location}</p>
 
-        <div className="border-t border-white/10 pt-3 grid grid-cols-2 gap-y-3 text-sm">
+        <div className="grid grid-cols-2 gap-y-3 border-t border-white/10 pt-3 text-sm">
           <div>
-            <p className="text-xs text-gray-500 mb-0.5">규모</p>
+            <p className="mb-0.5 text-xs text-gray-500">{t("portfolio.scale")}</p>
             <p className="font-semibold text-yellow-400">{property.scale}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-500 mb-0.5">층수</p>
+            <p className="mb-0.5 text-xs text-gray-500">{t("portfolio.floors")}</p>
             <p className="font-semibold text-white">{property.floors}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-500 mb-0.5">
-              {property.status === "inProgress" ? "용도" : "준공"}
+            <p className="mb-0.5 text-xs text-gray-500">
+              {t(property.status === "inProgress" ? "portfolio.usage" : "portfolio.completion")}
             </p>
             <p className="font-semibold text-white">
               {property.status === "inProgress" ? property.usage : property.completionYear}
@@ -56,9 +61,9 @@ const InfoWindow = ({ property, onClose }) => {
           href={property.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-flex items-center justify-center w-full bg-white/10 hover:bg-white/20 text-white font-semibold py-2 px-4 rounded-lg text-xs transition-colors"
+          className="mt-4 inline-flex w-full items-center justify-center rounded-lg bg-white/10 px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-white/20"
         >
-          카카오맵에서 보기
+          {t("portfolio.viewOnKakaoMap")}
           <FiExternalLink className="ml-1.5 shrink-0" size={12} />
         </a>
       </div>
@@ -68,17 +73,18 @@ const InfoWindow = ({ property, onClose }) => {
 
 /* ───────────────────────── ProjectCard ───────────────────────── */
 const ProjectCard = ({ property, isSelected, onClick }) => {
+  const { t } = useTranslation();
   const isInProgress = property.hasImage === false;
 
   const wrapperClass = clsx(
-    "group w-full h-full text-left transition-all duration-200 focus:outline-none flex flex-col",
+    "group flex size-full flex-col text-left transition-all duration-200 focus:outline-none",
     isInProgress
       ? clsx(
-          "rounded-2xl p-5 border bg-[#1c1c1e] hover:bg-[#242428]",
+          "rounded-2xl border bg-[#1c1c1e] p-5 hover:bg-[#242428]",
           isSelected ? "border-bronze-400 shadow-lg shadow-bronze-500/10" : "border-white/8 hover:border-white/20"
         )
       : clsx(
-          "rounded-xl overflow-hidden border bg-gray-900",
+          "overflow-hidden rounded-xl border bg-gray-900",
           isSelected ? "border-bronze-400 shadow-lg shadow-bronze-500/10" : "border-gray-700/50 hover:border-gray-600"
         )
   );
@@ -87,23 +93,23 @@ const ProjectCard = ({ property, isSelected, onClick }) => {
     return (
       <button onClick={() => onClick(property)} className={wrapperClass}>
         <div className="mb-3">
-          <span className="rounded-full bg-green-600/80 px-2.5 py-1 text-xs font-semibold text-white">진행 중</span>
+          <span className="rounded-full bg-green-600/80 px-2.5 py-1 text-xs font-semibold text-white">{t("portfolio.statusInProgress")}</span>
         </div>
-        <h3 className="text-base font-bold text-white leading-snug break-keep mb-1 line-clamp-2">
+        <h3 className="mb-1 line-clamp-2 break-keep text-base font-bold leading-snug text-white">
           {property.title}
         </h3>
-        <p className="text-xs text-gray-500 mb-4">{property.location}</p>
-        <div className="border-t border-white/10 pt-3 grid grid-cols-2 gap-y-3 mt-auto">
+        <p className="mb-4 text-xs text-gray-500">{property.location}</p>
+        <div className="mt-auto grid grid-cols-2 gap-y-3 border-t border-white/10 pt-3">
           <div>
-            <p className="text-xs text-gray-500 mb-0.5">규모</p>
+            <p className="mb-0.5 text-xs text-gray-500">{t("portfolio.scale")}</p>
             <p className="text-sm font-semibold text-yellow-400">{property.scale}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-500 mb-0.5">층수</p>
+            <p className="mb-0.5 text-xs text-gray-500">{t("portfolio.floors")}</p>
             <p className="text-sm font-semibold text-white">{property.floors}</p>
           </div>
           <div>
-            <p className="text-xs text-gray-500 mb-0.5">용도</p>
+            <p className="mb-0.5 text-xs text-gray-500">{t("portfolio.usage")}</p>
             <p className="text-sm font-semibold text-white">{property.usage}</p>
           </div>
         </div>
@@ -113,34 +119,34 @@ const ProjectCard = ({ property, isSelected, onClick }) => {
 
   return (
     <button onClick={() => onClick(property)} className={wrapperClass}>
-      <div className="relative overflow-hidden bg-gray-800 aspect-[4/3] shrink-0">
+      <div className="relative aspect-[4/3] shrink-0 overflow-hidden bg-gray-800">
         <img
           src={property.image}
           alt={property.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
           loading="lazy"
           onError={(e) => { e.currentTarget.style.display = "none"; }}
         />
         <span className={clsx(
-          "absolute top-2.5 left-2.5 rounded-full px-2.5 py-1 text-xs font-semibold text-white",
+          "absolute left-2.5 top-2.5 rounded-full px-2.5 py-1 text-xs font-semibold text-white",
           (property.filterTag || property.type) === "officetel" ? "bg-blue-600/80"
             : property.type === "living" ? "bg-red-600/80"
             : "bg-amber-500/80"
         )}>
-          {property.typeLabel}
+          {t(`portfolio.${property.filterTag || property.type}`)}
         </span>
       </div>
-      <div className="p-4 flex flex-col flex-1">
-        <h3 className="font-bold text-white leading-snug break-keep mb-3 line-clamp-2 flex-1">
+      <div className="flex flex-1 flex-col p-4">
+        <h3 className="mb-3 line-clamp-2 flex-1 break-keep font-bold leading-snug text-white">
           {property.title}
         </h3>
         <div className="flex justify-between gap-2 text-sm">
           <div>
-            <p className="text-xs text-gray-500 mb-0.5">준공</p>
+            <p className="mb-0.5 text-xs text-gray-500">{t("portfolio.completion")}</p>
             <p className="font-semibold text-white">{property.completionYear}</p>
           </div>
           <div className="text-right">
-            <p className="text-xs text-gray-500 mb-0.5">규모</p>
+            <p className="mb-0.5 text-xs text-gray-500">{t("portfolio.scale")}</p>
             <p className="font-semibold text-yellow-400">{property.scale}</p>
           </div>
         </div>
@@ -154,6 +160,12 @@ const Portfolio = () => {
   const { t } = useTranslation();
   const [searchParams] = useSearchParams();
   const mapContainerRef = useRef(null);
+
+  // Load the Kakao Maps SDK on demand (only this page needs it).
+  const [kakaoLoading, kakaoError] = useKakaoLoader({
+    appkey: import.meta.env.VITE_KAKAO_MAP_API_KEY,
+    libraries: ["services"],
+  });
 
   const ALL_TYPES = ["living", "commercial", "officetel"];
   const initialType = searchParams.get("type");
@@ -227,45 +239,45 @@ const Portfolio = () => {
     { id: "all",        label: t("portfolio.all", "All"),             activeClass: "bg-zinc-600" },
     { id: "living",     label: t("portfolio.living", "주택"),         activeClass: "bg-red-600" },
     { id: "commercial", label: t("portfolio.commercial", "상업시설"), activeClass: "bg-amber-500" },
-    { id: "officetel",  label: "오피스텔",                             activeClass: "bg-blue-600" },
+    { id: "officetel",  label: t("portfolio.officetel", "오피스텔"),   activeClass: "bg-blue-600" },
   ];
 
   return (
     <section
       id="portfolio"
-      className="flex flex-col items-center py-16 px-4 sm:px-6 lg:px-8 bg-black text-gray-200 min-h-screen pt-24"
+      className="flex min-h-screen flex-col items-center bg-black px-4 py-16 pt-24 text-gray-200 sm:px-6 lg:px-8"
     >
-      <div className="container w-full max-w-7xl mx-auto">
+      <div className="container mx-auto w-full max-w-7xl">
 
         {/* ── Header ── */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold special-font text-gray-100">
+        <div className="mb-8 text-center">
+          <h1 className="special-font text-4xl font-bold text-gray-100 md:text-5xl">
             {t("portfolio.title", "포트폴리오")}
           </h1>
         </div>
 
         {/* ── Stats row ── */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+        <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
           {[
-            { dot: "bg-bronze-400", label: "완료",     value: `${completedCount}건` },
-            { dot: "bg-green-400",  label: "진행중",   value: `${inProgressCount}건` },
-            { dot: "bg-red-400",    label: "주택",     value: `${livingCount}개` },
-            { dot: "bg-amber-400",  label: "상업",     value: `${commercialCount}개` },
-            { dot: "bg-blue-400",   label: "오피스텔", value: `${officetelCount}개` },
+            { dot: "bg-bronze-400", label: t("portfolio.statusCompleted"),  value: `${completedCount}${t("portfolio.unitCases")}` },
+            { dot: "bg-green-400",  label: t("portfolio.statusInProgress"), value: `${inProgressCount}${t("portfolio.unitCases")}` },
+            { dot: "bg-red-400",    label: t("portfolio.living"),           value: `${livingCount}${t("portfolio.unitItems")}` },
+            { dot: "bg-amber-400",  label: t("portfolio.commercial"),       value: `${commercialCount}${t("portfolio.unitItems")}` },
+            { dot: "bg-blue-400",   label: t("portfolio.officetel"),        value: `${officetelCount}${t("portfolio.unitItems")}` },
           ].map(({ dot, label, value }) => (
             <div
               key={label}
-              className="flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-2 text-sm"
+              className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm"
             >
-              <span className={clsx("w-2 h-2 rounded-full shrink-0", dot)} />
+              <span className={clsx("size-2 shrink-0 rounded-full", dot)} />
               <span className="text-gray-400">{label}</span>
-              <span className="text-white font-bold">{value}</span>
+              <span className="font-bold text-white">{value}</span>
             </div>
           ))}
         </div>
 
         {/* ── Filter buttons ── */}
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+        <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
           {filterButtons.map((btn) => {
             const isActive =
               (btn.id === "all" && filters.length === ALL_TYPES.length) ||
@@ -275,7 +287,7 @@ const Portfolio = () => {
                 key={btn.id}
                 onClick={() => toggleFilter(btn.id)}
                 className={clsx(
-                  "px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 hover:scale-105",
+                  "rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:scale-105",
                   isActive
                     ? `${btn.activeClass} text-white shadow-lg`
                     : "bg-gray-800 text-gray-300 hover:bg-gray-700"
@@ -290,45 +302,54 @@ const Portfolio = () => {
         {/* ── Map ── */}
         <div
           ref={mapContainerRef}
-          className="relative rounded-xl overflow-hidden border border-gray-700 shadow-2xl mb-10"
+          className="relative mb-10 overflow-hidden rounded-xl border border-gray-700 shadow-2xl"
         >
-          <Map
-            center={{ lat: 37.2, lng: 127.0 }}
-            style={{ width: "100%", height: "65vh" }}
-            level={12}
-            className="bg-gray-900"
-            onCreate={setMap}
-          >
-            {filteredMarkers.map((property) => (
-              <MapMarker
-                key={property.id}
-                position={{ lat: property.lat, lng: property.lng }}
-                onClick={() => handleMarkerClick(property)}
-                image={{
-                  src:
-                    property.status === "inProgress"
-                      ? markerSources.inProgress
-                      : markerSources[property.filterTag || property.type],
-                  size: { width: 42, height: 52 },
-                }}
-                title={property.title}
-              />
-            ))}
-          </Map>
+          {kakaoLoading || kakaoError ? (
+            <div
+              style={{ width: "100%", height: "65vh" }}
+              className="flex items-center justify-center bg-gray-900 text-sm text-gray-500"
+            >
+              {kakaoError ? "Map unavailable" : "Loading map…"}
+            </div>
+          ) : (
+            <Map
+              center={{ lat: 37.2, lng: 127.0 }}
+              style={{ width: "100%", height: "65vh" }}
+              level={12}
+              className="bg-gray-900"
+              onCreate={setMap}
+            >
+              {filteredMarkers.map((property) => (
+                <MapMarker
+                  key={property.id}
+                  position={{ lat: property.lat, lng: property.lng }}
+                  onClick={() => handleMarkerClick(property)}
+                  image={{
+                    src:
+                      property.status === "inProgress"
+                        ? markerSources.inProgress
+                        : markerSources[property.filterTag || property.type],
+                    size: { width: 42, height: 52 },
+                  }}
+                  title={property.title}
+                />
+              ))}
+            </Map>
+          )}
 
           {/* 마커 범례 */}
-          <div className="absolute bottom-4 right-4 z-10 flex flex-col gap-1.5 bg-black/60 backdrop-blur-sm rounded-lg px-3 py-2.5 text-xs text-gray-200">
+          <div className="absolute bottom-4 right-4 z-10 flex flex-col gap-1.5 rounded-lg bg-black/60 px-3 py-2.5 text-xs text-gray-200 backdrop-blur-sm">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-500 shrink-0" />주택
+              <span className="size-2.5 shrink-0 rounded-full bg-red-500" />{t("portfolio.living")}
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shrink-0" />상업시설
+              <span className="size-2.5 shrink-0 rounded-full bg-amber-500" />{t("portfolio.commercial")}
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-blue-500 shrink-0" />오피스텔
+              <span className="size-2.5 shrink-0 rounded-full bg-blue-500" />{t("portfolio.officetel")}
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-green-500 shrink-0" />진행중
+              <span className="size-2.5 shrink-0 rounded-full bg-green-500" />{t("portfolio.statusInProgress")}
             </div>
           </div>
 
@@ -354,7 +375,7 @@ const Portfolio = () => {
                 </div>
               )}
               {inProgress.length > 0 && (
-                <div className={`grid gap-3 mt-3 ${inProgress.length === 1 ? "grid-cols-1 max-w-sm" : "grid-cols-1 sm:grid-cols-2"}`}>
+                <div className={`mt-3 grid gap-3 ${inProgress.length === 1 ? "max-w-sm grid-cols-1" : "grid-cols-1 sm:grid-cols-2"}`}>
                   {inProgress.map((property) => (
                     <ProjectCard
                       key={property.id}

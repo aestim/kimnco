@@ -141,7 +141,17 @@
     "all": "All",
     "living": "Living",
     "commercial": "Commercial",
-    "resorts": "Resorts"
+    "officetel": "Officetel",
+    "resorts": "Resorts",
+    "statusInProgress": "In Progress",
+    "statusCompleted": "Completed",
+    "scale": "Scale",
+    "floors": "Floors",
+    "usage": "Use",
+    "completion": "Built",
+    "unitCases": "",
+    "unitItems": "",
+    "viewOnKakaoMap": "View on Kakao Map"
   },
   "timeline": {
     "mainTitle": "History",

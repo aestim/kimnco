@@ -286,7 +286,17 @@
     "all": "All",
     "living": "주택",
     "commercial": "상업시설",
-    "resorts": "리조트"
+    "officetel": "오피스텔",
+    "resorts": "리조트",
+    "statusInProgress": "진행 중",
+    "statusCompleted": "완료",
+    "scale": "규모",
+    "floors": "층수",
+    "usage": "용도",
+    "completion": "준공",
+    "unitCases": "건",
+    "unitItems": "개",
+    "viewOnKakaoMap": "카카오맵에서 보기"
   },
   "footer": {
     "quickLinks": "바로가기",

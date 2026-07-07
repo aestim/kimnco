@@ -15,7 +15,7 @@ i18n
     },
     // lng: 'ko',
     fallbackLng: 'ko', // use English if detected language is not available
-    debug: true, // set to false in production
+    debug: import.meta.env.DEV, // verbose logs in dev only
     interpolation: {
       escapeValue: false, // react handles XSS protection
     },

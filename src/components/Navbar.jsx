@@ -1,5 +1,5 @@
 import { useWindowScroll } from "react-use";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 import clsx from "clsx";
@@ -9,7 +9,6 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 const NavBar = ({ lang }) => {
   const { t } = useTranslation();
   const navItems = t("nav", { returnObjects: true });
-  const navContainerRef = useRef(null);
   const { y: currentScrollY } = useWindowScroll();
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -39,16 +38,6 @@ const NavBar = ({ lang }) => {
 
     setLastScrollY(currentScrollY);
   }, [currentScrollY, lastScrollY, isMobileMenuOpen]);
-
-  useEffect(() => {
-    if (window.gsap) {
-      window.gsap.to(navContainerRef.current, {
-        y: isNavVisible ? 0 : -150,
-        duration: 0.3,
-        ease: "power2.out",
-      });
-    }
-  }, [isNavVisible]);
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
@@ -90,12 +79,14 @@ const NavBar = ({ lang }) => {
   return (
     <>
       <div
-        ref={navContainerRef}
-        className="fixed inset-x-0 top-0 z-50 p-3 sm:p-4"
+        className={clsx(
+          "fixed inset-x-0 top-0 z-50 p-3 transition-transform duration-300 ease-out sm:p-4",
+          isNavVisible ? "translate-y-0" : "-translate-y-full"
+        )}
       >
         <header
           className={clsx(
-            "relative w-full h-16 rounded-xl border transition-all duration-300",
+            "relative h-16 w-full rounded-xl border transition-all duration-300",
             {
               "bg-midnight-900/90 backdrop-blur-xl shadow-lg border-white/10":
                 !isAtTop || isMobileMenuOpen,
@@ -104,16 +95,16 @@ const NavBar = ({ lang }) => {
             }
           )}
         >
-          <nav className="flex items-center justify-between w-full h-full px-4 sm:px-6">
+          <nav className="flex size-full items-center justify-between px-4 sm:px-6">
             <Link
               to={`/${lang}`}
-              className="flex items-center shrink-0"
+              className="flex shrink-0 items-center"
               onClick={handleLogoClick}
             >
               <img src="/img/logo.png" alt="Kim & Co" className="w-10" />
             </Link>
 
-            <div className="hidden lg:flex h-full items-center gap-6">
+            <div className="hidden h-full items-center gap-6 lg:flex">
               {Array.isArray(navItems) &&
                 navItems.map((item) => (
                   <a
@@ -155,7 +146,7 @@ const NavBar = ({ lang }) => {
           }
         )}
       >
-        <div className="flex flex-col items-center justify-center h-full pt-16">
+        <div className="flex h-full flex-col items-center justify-center pt-16">
           <div className="flex flex-col items-center gap-6 text-center">
             {Array.isArray(navItems) &&
               navItems.map((item) => (

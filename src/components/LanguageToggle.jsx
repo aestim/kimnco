@@ -1,17 +1,19 @@
 import { useTranslation } from 'react-i18next';
 import clsx from 'clsx';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const LanguageToggle = ({ className }) => {
   const { i18n } = useTranslation();
   const navigate = useNavigate();
+  const { pathname, search, hash } = useLocation();
 
   const isKoreanActive = i18n.language.startsWith('ko');
 
   const handleLanguageChange = (lang) => {
     if (i18n.language.startsWith(lang)) return;
     i18n.changeLanguage(lang);
-    navigate(`/${lang}`);
+    // Stay on the same page: swap only the leading /:lang segment.
+    navigate(pathname.replace(/^\/[^/]+/, `/${lang}`) + search + hash);
   };
 
   // Base styling for the text links
@@ -30,7 +32,7 @@ const LanguageToggle = ({ className }) => {
           buttonBaseClasses,
           {
             'text-white font-semibold': isKoreanActive,
-            'text-gray-600 hover:text-white': !isKoreanActive,
+            'text-silver-400 hover:text-white': !isKoreanActive,
           }
         )}
       >
@@ -38,7 +40,7 @@ const LanguageToggle = ({ className }) => {
       </button>
 
       {/* Separator */}
-      <span className="text-gray-600">/</span>
+      <span className="text-silver-500">/</span>
 
       {/* English Language Button */}
       <button
@@ -47,7 +49,7 @@ const LanguageToggle = ({ className }) => {
           buttonBaseClasses,
           {
             'text-white font-semibold': !isKoreanActive,
-            'text-gray-600 hover:text-white': isKoreanActive,
+            'text-silver-400 hover:text-white': isKoreanActive,
           }
         )}
       >

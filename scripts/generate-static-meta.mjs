@@ -5,7 +5,7 @@
  * Why: KakaoTalk, Naver and most link-preview scrapers do NOT execute
  * JavaScript, so meta tags rendered by React are invisible to them.
  * This script copies dist/index.html once per route and swaps the
- * <!-- SEO:START --> ... <!-- SEO:END --> block, so Vercel serves a
+ * <!-- SEO:START --> ... <!-- SEO:END --> block, so Cloudflare serves a
  * shell with the right title/description/OG tags before the SPA hydrates.
  *
  * Also emits dist/sitemap.xml.

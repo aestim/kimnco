@@ -9,7 +9,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom', 'react-i18next', 'i18next'],
+          vendor: ['react', 'react-dom', 'react-dom/client', 'react-router-dom', 'react-i18next', 'i18next'],
           maps: ['react-kakao-maps-sdk']
         }
       }

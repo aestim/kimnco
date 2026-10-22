@@ -1,4 +1,3 @@
-import { useWindowScroll } from "react-use";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
@@ -9,7 +8,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 const NavBar = ({ lang }) => {
   const { t } = useTranslation();
   const navItems = t("nav", { returnObjects: true });
-  const { y: currentScrollY } = useWindowScroll();
+  const [currentScrollY, setCurrentScrollY] = useState(0);
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -18,6 +17,13 @@ const NavBar = ({ lang }) => {
 
   const isHome =
     location.pathname === `/${lang}` || location.pathname === `/${lang}/`;
+
+  useEffect(() => {
+    const handleScroll = () => setCurrentScrollY(window.scrollY);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const atTop = currentScrollY <= 10;
@@ -107,14 +113,14 @@ const NavBar = ({ lang }) => {
             <div className="hidden h-full items-center gap-6 lg:flex">
               {Array.isArray(navItems) &&
                 navItems.map((item) => (
-                  <a
+                  <Link
                     key={item.id}
-                    href={getNavHref(item)}
+                    to={getNavHref(item)}
                     onClick={(e) => handleNavClick(item, e)}
                     className={navLinkClass}
                   >
                     {item.text}
-                  </a>
+                  </Link>
                 ))}
               <LanguageToggle className="ml-4" />
             </div>
@@ -150,14 +156,14 @@ const NavBar = ({ lang }) => {
           <div className="flex flex-col items-center gap-6 text-center">
             {Array.isArray(navItems) &&
               navItems.map((item) => (
-                <a
+                <Link
                   key={item.id}
-                  href={getNavHref(item)}
+                  to={getNavHref(item)}
                   onClick={(e) => handleNavClick(item, e)}
                   className="text-2xl font-semibold text-gray-200 transition-colors hover:text-white"
                 >
                   {item.text}
-                </a>
+                </Link>
               ))}
           </div>
           <div className="mt-12">

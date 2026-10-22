@@ -10,7 +10,7 @@ import Seo from './components/Seo';
 import NotFound from './components/NotFound';
 
 // Lazy load page components
-const HomePage = lazy(() => import('./components/HomePage')); // You'll need to create this file or move the HomePage component
+const HomePage = lazy(() => import('./components/HomePage'));
 const Portfolio = lazy(() => import('./components/Portfolio'));
 const Contact = lazy(() => import('./components/Contact'));
 const Legal = lazy(() => import('./components/Legal'));
@@ -63,13 +63,15 @@ function LanguageLayout() {
   }
 
   // Derive the current page from the path for per-page SEO tags.
+  // Unknown pages (404) get none, so they don't claim the home canonical.
   const segment = pathname.split('/')[2] || '';
-  const seoPage = ['portfolio', 'contact', 'legal'].includes(segment) ? segment : 'home';
+  const seoPage = segment === '' ? 'home'
+    : ['portfolio', 'contact', 'legal'].includes(segment) ? segment : null;
 
   // If the language is set correctly, render the main layout and the child route.
   return (
     <>
-      <Seo page={seoPage} lang={lang} />
+      {seoPage && <Seo page={seoPage} lang={lang} />}
       <ScrollToTop />
       <NavBar lang={lang} />
       {/* Outlet renders the matched child route (e.g., HomePage or PortfolioPage) */}
@@ -81,13 +83,7 @@ function LanguageLayout() {
   );
 }
 
-// --- 3. Page Components ---
-// These are now simple and focused only on their content.
-
-// Note: HomePage definition removed from here as it should be in its own file for lazy loading to work effectively. 
-// I will ensure src/components/HomePage.jsx exists.
-
-// --- 4. Main App Component (Simplified Routing Structure) ---
+// --- 3. Main App Component ---
 function App() {
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden">
@@ -101,7 +97,6 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="contact" element={<Contact />} />
-          {/* Add more pages here, e.g., <Route path="contact" element={<Contact />} /> */}
           <Route path="legal" element={<Legal />} />
           {/* Unknown paths under a valid language show a 404 page */}
           <Route path="*" element={<NotFound />} />

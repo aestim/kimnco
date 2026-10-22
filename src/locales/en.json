@@ -151,7 +151,9 @@
     "completion": "Built",
     "unitCases": "",
     "unitItems": "",
-    "viewOnKakaoMap": "View on Kakao Map"
+    "viewOnKakaoMap": "View on Kakao Map",
+    "mapLoading": "Loading map…",
+    "mapUnavailable": "Map unavailable"
   },
   "timeline": {
     "mainTitle": "History",

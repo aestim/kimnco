@@ -296,7 +296,9 @@
     "completion": "준공",
     "unitCases": "건",
     "unitItems": "개",
-    "viewOnKakaoMap": "카카오맵에서 보기"
+    "viewOnKakaoMap": "카카오맵에서 보기",
+    "mapLoading": "지도를 불러오는 중…",
+    "mapUnavailable": "지도를 불러올 수 없습니다"
   },
   "footer": {
     "quickLinks": "바로가기",

@@ -12,6 +12,10 @@ const Hero = () => {
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+    // Keep the poster for visitors who asked for less motion or less data
+    // (the 2.3MB video only starts downloading once play() is called).
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReducedMotion || navigator.connection?.saveData) return;
     v.muted = true;
     v.play().catch(() => {});
   }, []);
@@ -23,10 +27,9 @@ const Hero = () => {
         src="/videos/hero.mp4"
         poster="/img/hero-poster.webp"
         loop
-        autoPlay
         muted
         playsInline
-        preload="auto"
+        preload="none"
         className="absolute inset-0 size-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-midnight-950" />
@@ -43,7 +46,7 @@ const Hero = () => {
             className="mt-6 max-w-xl break-keep text-xl font-medium leading-relaxed text-silver-200 md:text-2xl"
             dangerouslySetInnerHTML={{ __html: t("hero.tagline") }}
           />
-          <p className="mt-4 max-w-2xl break-keep text-base leading-relaxed text-silver-400 md:text-lg">
+          <p className="mt-4 max-w-2xl break-keep text-base leading-relaxed text-silver-200 md:text-lg">
             {t("hero.description")}
           </p>
 
@@ -77,7 +80,7 @@ const Hero = () => {
                   {stat.label}
                 </p>
                 {stat.sub && (
-                  <p className="mt-0.5 break-keep text-xs text-silver-500">
+                  <p className="mt-0.5 break-keep text-xs text-silver-400">
                     {stat.sub}
                   </p>
                 )}

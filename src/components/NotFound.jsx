@@ -20,6 +20,8 @@ const NotFound = () => {
 
   return (
     <section className="flex min-h-dvh flex-col items-center justify-center bg-midnight-950 px-6 text-center">
+      {/* Unknown URLs return 200 (SPA fallback), so keep them out of the index. */}
+      <meta name="robots" content="noindex" />
       <p className="text-sm font-semibold uppercase tracking-[0.35em] text-bronze-400">
         404
       </p>

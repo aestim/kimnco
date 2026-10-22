@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { Map, MapMarker, useKakaoLoader } from "react-kakao-maps-sdk";
 import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -7,6 +7,8 @@ import { MdClose } from "react-icons/md";
 import { FiExternalLink } from "react-icons/fi";
 
 import { properties, markerSources } from "../data/properties";
+
+const ALL_TYPES = ["living", "commercial", "officetel"];
 
 /* ───────────────────────── InfoWindow ───────────────────────── */
 const InfoWindow = ({ property, onClose }) => {
@@ -81,7 +83,7 @@ const ProjectCard = ({ property, isSelected, onClick }) => {
     isInProgress
       ? clsx(
           "rounded-2xl border bg-[#1c1c1e] p-5 hover:bg-[#242428]",
-          isSelected ? "border-bronze-400 shadow-lg shadow-bronze-500/10" : "border-white/8 hover:border-white/20"
+          isSelected ? "border-bronze-400 shadow-lg shadow-bronze-500/10" : "border-white/10 hover:border-white/20"
         )
       : clsx(
           "overflow-hidden rounded-xl border bg-gray-900",
@@ -167,10 +169,9 @@ const Portfolio = () => {
     libraries: ["services"],
   });
 
-  const ALL_TYPES = ["living", "commercial", "officetel"];
   const initialType = searchParams.get("type");
   const [filters, setFilters] = useState(() =>
-    initialType ? [initialType] : [...ALL_TYPES]
+    ALL_TYPES.includes(initialType) ? [initialType] : [...ALL_TYPES]
   );
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [map, setMap] = useState(null);
@@ -220,7 +221,10 @@ const Portfolio = () => {
     }
   };
 
-  const filteredMarkers = properties.filter((p) => filters.includes(p.filterTag || p.type));
+  const filteredMarkers = useMemo(
+    () => properties.filter((p) => filters.includes(p.filterTag || p.type)),
+    [filters]
+  );
 
   useEffect(() => {
     if (!map) return;
@@ -233,7 +237,7 @@ const Portfolio = () => {
     );
     map.setBounds(bounds, 100, 100, 100, 100);
     setOverviewBounds(bounds);
-  }, [filters, map]);
+  }, [filteredMarkers, map]);
 
   const filterButtons = [
     { id: "all",        label: t("portfolio.all", "All"),             activeClass: "bg-zinc-600" },
@@ -309,7 +313,7 @@ const Portfolio = () => {
               style={{ width: "100%", height: "65vh" }}
               className="flex items-center justify-center bg-gray-900 text-sm text-gray-500"
             >
-              {kakaoError ? "Map unavailable" : "Loading map…"}
+              {t(kakaoError ? "portfolio.mapUnavailable" : "portfolio.mapLoading")}
             </div>
           ) : (
             <Map
